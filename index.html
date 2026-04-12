@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity & Digital Forensics Portfolio</title>
+<title>Cybersecurity SOC Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
@@ -20,23 +20,31 @@ box-sizing:border-box;
 
 body{
 font-family:Inter;
-background:#050814;
 color:#e2e8f0;
-line-height:1.6;
+background:black;
 overflow-x:hidden;
+line-height:1.6;
 }
 
 /* =========================
-   CYBER GRID BACKGROUND
+   MATRIX BACKGROUND
 ========================= */
+#matrix{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-3;
+background:black;
+}
+
+/* dark overlay for readability */
 body::before{
 content:"";
 position:fixed;
 inset:0;
-background:
-linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
-background-size:50px 50px;
+background:rgba(0,0,0,0.55);
 z-index:-2;
 }
 
@@ -51,15 +59,15 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:14px 26px;
-background:rgba(5,8,20,0.85);
-backdrop-filter:blur(16px);
-border-bottom:1px solid rgba(56,189,248,0.25);
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(0,255,120,0.2);
 z-index:1000;
 }
 
 nav h2{
 font-family:Orbitron;
-color:#38bdf8;
+color:#00ff88;
 font-size:16px;
 }
 
@@ -78,14 +86,14 @@ transition:0.3s;
 }
 
 .nav-links a:hover{
-color:#38bdf8;
-background:rgba(56,189,248,0.1);
+color:#00ff88;
+background:rgba(0,255,136,0.08);
 }
 
 .menu-toggle{
 display:none;
 font-size:22px;
-color:#38bdf8;
+color:#00ff88;
 cursor:pointer;
 }
 
@@ -98,9 +106,10 @@ top:60px;
 left:0;
 right:0;
 flex-direction:column;
-background:rgba(5,8,20,0.95);
+background:rgba(0,0,0,0.95);
 display:none;
 padding:10px 0;
+border-bottom:1px solid rgba(0,255,136,0.2);
 }
 
 .nav-links.show{display:flex;}
@@ -121,24 +130,24 @@ text-align:center;
 .hero h1{
 font-size:2.6rem;
 font-family:Orbitron;
-color:#38bdf8;
+color:#00ff88;
 }
 
 .hero p{
+color:#94a3b8;
 max-width:800px;
 margin:10px auto;
-color:#94a3b8;
 }
 
 .btn{
 display:inline-block;
 margin:10px 6px;
 padding:10px 18px;
-background:#0ea5e9;
+background:#00ff88;
 color:black;
 border-radius:8px;
 text-decoration:none;
-font-weight:600;
+font-weight:700;
 }
 
 /* =========================
@@ -151,14 +160,14 @@ margin:auto;
 }
 
 .chapter{
-border-left:4px solid #38bdf8;
+border-left:4px solid #00ff88;
 padding-left:10px;
 margin-bottom:25px;
 }
 
 .chapter h2{
 font-family:Orbitron;
-color:#38bdf8;
+color:#00ff88;
 }
 
 /* =========================
@@ -174,13 +183,13 @@ gap:18px;
 background:rgba(15,23,42,0.75);
 padding:18px;
 border-radius:12px;
-border:1px solid rgba(56,189,248,0.2);
+border:1px solid rgba(0,255,136,0.15);
 transition:0.3s;
 }
 
 .card:hover{
 transform:translateY(-5px);
-border-color:#38bdf8;
+border-color:#00ff88;
 }
 
 .tag{
@@ -188,7 +197,7 @@ display:inline-block;
 margin-top:8px;
 padding:4px 10px;
 font-size:11px;
-background:#0ea5e9;
+background:#00ff88;
 color:black;
 border-radius:20px;
 }
@@ -200,7 +209,7 @@ border-radius:20px;
 background:rgba(15,23,42,0.6);
 padding:25px;
 border-radius:14px;
-border:1px solid rgba(56,189,248,0.2);
+border:1px solid rgba(0,255,136,0.2);
 max-width:600px;
 margin:auto;
 }
@@ -237,7 +246,7 @@ font-weight:600;
 footer{
 text-align:center;
 padding:25px;
-border-top:1px solid #1e3a8a;
+border-top:1px solid rgba(0,255,136,0.2);
 color:#64748b;
 font-size:13px;
 }
@@ -247,9 +256,12 @@ font-size:13px;
 
 <body>
 
+<!-- MATRIX CANVAS -->
+<canvas id="matrix"></canvas>
+
 <!-- NAV -->
 <nav>
-<h2>Cyber Portfolio</h2>
+<h2>SOC TERMINAL</h2>
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
 <div class="nav-links" id="navLinks">
@@ -266,25 +278,23 @@ font-size:13px;
 
 <!-- HERO -->
 <div class="hero">
-<h1>Cybersecurity & Digital Forensics Professional</h1>
-<p>Penetration Testing • Software Development • Digital Forensics • Secure Systems Engineering</p>
+<h1>CYBERSECURITY ANALYST | SOC TRAINEE</h1>
+<p>Penetration Testing • Digital Forensics • Secure Software Development • Threat Analysis</p>
 
 <a class="btn"
 href="https://wa.me/254798802545?text=Hi%20I%20viewed%20your%20cybersecurity%20portfolio%20and%20would%20like%20to%20connect"
 target="_blank">
-WhatsApp Me
+CONTACT ME
 </a>
 
-<a class="btn" href="CV.pdf" download>Download CV</a>
+<a class="btn" href="CV.pdf" download>DOWNLOAD CV</a>
 </div>
 
 <!-- SUMMARY -->
 <section id="summary">
 <div class="chapter"><h2>Professional Summary</h2></div>
 <p>
-Cybersecurity, Digital Forensics, and Software Development professional specializing in penetration testing, secure system development, and forensic investigation of digital evidence. Experienced in Laravel full-stack development (frontend and backend), vulnerability assessment, network security monitoring, and incident response.
-
-Strong focus on building secure systems, analyzing cyber threats, and applying forensic methodologies to identify, preserve, and report digital evidence in investigative environments.
+Cybersecurity and Digital Forensics professional with experience in penetration testing, SOC-style monitoring, and secure software development using Laravel (frontend and backend). Skilled in identifying vulnerabilities, analyzing cyber threats, and performing forensic investigations on digital systems.
 </p>
 </section>
 
@@ -296,23 +306,23 @@ Strong focus on building secure systems, analyzing cyber threats, and applying f
 
 <div class="card">
 <h3>Cybersecurity</h3>
-<p>Penetration Testing, Vulnerability Assessment, Ethical Hacking</p>
+<p>Penetration Testing, Vulnerability Assessment</p>
 </div>
 
 <div class="card">
 <h3>Software Development</h3>
-<p>Laravel (Frontend & Backend), PHP, MySQL, API Integration</p>
-<span class="tag">Full Stack</span>
+<p>Laravel Full Stack, PHP, MySQL, API Integration</p>
+<span class="tag">Full Stack Dev</span>
 </div>
 
 <div class="card">
 <h3>Digital Forensics</h3>
-<p>Memory Analysis, Disk Imaging, Network Forensics, Evidence Handling</p>
+<p>Memory Analysis, Disk Imaging, Network Forensics</p>
 </div>
 
 <div class="card">
-<h3>Systems & Networking</h3>
-<p>Linux, Windows Server, CCTV, LAN/WAN</p>
+<h3>Systems</h3>
+<p>Linux, Windows Server, Networking, CCTV</p>
 </div>
 
 </div>
@@ -326,22 +336,22 @@ Strong focus on building secure systems, analyzing cyber threats, and applying f
 
 <div class="card">
 <h3>Kenyatta University Attachment</h3>
-<p>Web development, WordPress support, UI/UX improvements</p>
+<p>Web development, WordPress, UI/UX support</p>
 </div>
 
 <div class="card">
-<h3>IT Support – Wattline Technologies</h3>
-<p>Networking, CCTV installation, IT infrastructure support</p>
+<h3>Wattline Technologies</h3>
+<p>IT support, networking, CCTV installation</p>
 </div>
 
 <div class="card">
-<h3>Personal Cybersecurity Projects</h3>
-<p>Hands-on exploitation of Kioptrix, Brainpan, GoldenEye systems</p>
+<h3>Cybersecurity Labs</h3>
+<p>Hands-on exploitation: Kioptrix, Brainpan, GoldenEye</p>
 </div>
 
 <div class="card">
-<h3>Software Development Projects</h3>
-<p>Built Laravel-based systems with authentication, CRUD, and database integration (frontend + backend)</p>
+<h3>Laravel Projects</h3>
+<p>Built full-stack systems with authentication, CRUD, dashboards</p>
 </div>
 
 </div>
@@ -349,65 +359,65 @@ Strong focus on building secure systems, analyzing cyber threats, and applying f
 
 <!-- PROJECTS -->
 <section id="projects">
-<div class="chapter"><h2>Security Lab Projects</h2></div>
+<div class="chapter"><h2>Security Projects</h2></div>
 
 <div class="grid">
 
 <div class="card">
 <h3>Kioptrix</h3>
-<p>Linux exploitation, privilege escalation, service enumeration</p>
+<p>Linux privilege escalation & enumeration</p>
 </div>
 
 <div class="card">
 <h3>Brainpan</h3>
-<p>Buffer overflow exploitation and reverse engineering</p>
+<p>Buffer overflow & reverse engineering</p>
 </div>
 
 <div class="card">
 <h3>GoldenEye</h3>
-<p>Web vulnerability exploitation and authentication attacks</p>
+<p>Web application security testing</p>
 </div>
 
 </div>
 </section>
 
-<!-- DIGITAL FORENSICS -->
+<!-- FORENSICS -->
 <section id="forensics">
-<div class="chapter"><h2>Digital Forensics Projects</h2></div>
+<div class="chapter"><h2>Digital Forensics</h2></div>
 
 <div class="grid">
 
 <div class="card">
 <h3>Network Traffic Investigation</h3>
-<p>Packet analysis to detect anomalies and reconstruct communication patterns.</p>
+<p>Packet capture and anomaly detection</p>
 </div>
 
 <div class="card">
-<h3>Memory Forensics (RAM Analysis)</h3>
-<p>Analysis of volatile memory to identify malicious processes and hidden artifacts.</p>
+<h3>Memory Forensics</h3>
+<p>RAM analysis for malicious process detection</p>
 </div>
 
 <div class="card">
 <h3>Deleted File Recovery</h3>
-<p>Recovered and analyzed deleted files using forensic recovery techniques.</p>
+<p>Recovered and analyzed deleted system files</p>
 </div>
 
 <div class="card">
-<h3>Disk Imaging & Evidence Preservation</h3>
-<p>Created forensic disk images while maintaining chain of custody.</p>
+<h3>Disk Imaging</h3>
+<p>Evidence preservation with chain of custody</p>
 </div>
 
 </div>
 </section>
 
-<!-- CERTIFICATIONS -->
+<!-- CERTS -->
 <section id="certs">
 <div class="chapter"><h2>Certifications</h2></div>
 
 <div class="grid">
 
 <div class="card">
-<h3>Blockchain Security Examiner (CBSE)</h3>
+<h3>Blockchain Security Examiner</h3>
 <p>Alison</p>
 </div>
 
@@ -417,12 +427,7 @@ Strong focus on building secure systems, analyzing cyber threats, and applying f
 </div>
 
 <div class="card">
-<h3>CCTV & AutoCAD Systems</h3>
-<p>Alison</p>
-</div>
-
-<div class="card">
-<h3>Social Media Cybersecurity</h3>
+<h3>CCTV Systems & AutoCAD</h3>
 <p>Alison</p>
 </div>
 
@@ -466,10 +471,45 @@ target="_blank">
 
 <!-- FOOTER -->
 <footer>
-<p>© 2026 All Rights Reserved | Cybersecurity & Digital Forensics Portfolio</p>
+<p>© 2026 Cybersecurity & Digital Forensics Portfolio</p>
 </footer>
 
 <script>
+
+/* MATRIX EFFECT */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function draw(){
+ctx.fillStyle = "rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#00ff88";
+ctx.font = fontSize + "px monospace";
+
+for(let i=0;i<drops.length;i++){
+const text = letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random()>0.975){
+drops[i]=0;
+}
+drops[i]++;
+}
+
+requestAnimationFrame(draw);
+}
+draw();
+
+/* MOBILE MENU */
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("show");
 }
