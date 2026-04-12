@@ -3,125 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BM // GOD MODE PORTFOLIO</title>
+<title>Cybersecurity Portfolio | Job Ready</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
 <style>
 
-/* =====================
-   BASE SYSTEM
-===================== */
 body{
 margin:0;
-overflow:hidden;
-background:black;
-color:#38bdf8;
-font-family:monospace;
+font-family:Inter;
+background:#050814;
+color:#e2e8f0;
+line-height:1.6;
 }
 
-/* =====================
-   BOOT SEQUENCE
-===================== */
-#boot{
+/* NAV */
+nav{
 position:fixed;
+top:0;
 width:100%;
-height:100%;
-background:black;
 display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
+justify-content:space-between;
+padding:14px 40px;
+background:rgba(5,8,20,0.85);
+backdrop-filter:blur(10px);
+border-bottom:1px solid #1e3a8a;
+z-index:1000;
 }
 
-.boot-line{
-opacity:0;
-animation:fadeIn 1s forwards;
-}
-
-@keyframes fadeIn{
-to{opacity:1;}
-}
-
-/* =====================
-   MAIN HUD
-===================== */
-#hud{
-position:fixed;
-top:10px;
-left:10px;
-z-index:10;
-font-size:12px;
+nav h2{
+font-family:Orbitron;
 color:#38bdf8;
 }
 
-/* =====================
-   TERMINAL
-===================== */
-#terminal{
-position:fixed;
-bottom:0;
-left:0;
-width:40%;
-height:40%;
-background:rgba(0,0,0,0.7);
-border-top:1px solid #38bdf8;
-border-right:1px solid #38bdf8;
-padding:10px;
-overflow:auto;
+nav a{
+color:#cbd5e1;
+margin-left:18px;
+text-decoration:none;
+font-size:14px;
 }
 
-#input{
-width:100%;
-background:black;
-border:none;
-color:#38bdf8;
-outline:none;
-font-family:monospace;
+nav a:hover{color:#38bdf8;}
+
+/* HERO */
+.hero{
+padding:140px 20px 60px;
+text-align:center;
 }
 
-/* =====================
-   AI PANEL
-===================== */
-#ai{
-position:fixed;
-right:0;
-top:0;
-width:300px;
-height:100%;
-background:rgba(10,15,30,0.8);
-border-left:1px solid #38bdf8;
-padding:10px;
-overflow:auto;
-}
-
-.ai-msg{
-margin:5px 0;
-}
-
-/* =====================
-   CANVAS BACKGROUND
-===================== */
-canvas{
-position:fixed;
-top:0;
-left:0;
-}
-
-/* =====================
-   GLASS TEXT
-===================== */
-.title{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+.hero h1{
 font-size:3rem;
 font-family:Orbitron;
-text-shadow:0 0 20px #38bdf8;
+color:#38bdf8;
+}
+
+.hero p{
+max-width:700px;
+margin:auto;
+color:#94a3b8;
+}
+
+/* BUTTONS */
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 18px;
+background:#0ea5e9;
+color:black;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+}
+
+.btn:hover{transform:scale(1.05);}
+
+/* SECTIONS */
+section{
+padding:70px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+font-family:Orbitron;
+color:#38bdf8;
+border-left:4px solid #38bdf8;
+padding-left:10px;
+margin-bottom:20px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+/* CARD */
+.card{
+background:rgba(15,23,42,0.75);
+padding:20px;
+border-radius:12px;
+border:1px solid rgba(56,189,248,0.2);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+border-color:#38bdf8;
+}
+
+/* TAG */
+.tag{
+display:inline-block;
+margin-top:8px;
+padding:4px 10px;
+font-size:12px;
+background:#0ea5e9;
+color:black;
+border-radius:20px;
+}
+
+/* FORM */
+form{
+display:flex;
+flex-direction:column;
+max-width:500px;
+}
+
+input,textarea{
+margin:8px 0;
+padding:10px;
+border:none;
+border-radius:8px;
+background:#0f172a;
+color:white;
+outline:none;
+}
+
+textarea{min-height:120px;}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+border-top:1px solid #1e3a8a;
+color:#64748b;
 }
 
 </style>
@@ -129,133 +156,152 @@ text-shadow:0 0 20px #38bdf8;
 
 <body>
 
-<!-- BOOT -->
-<div id="boot">
-<div class="boot-line">INITIALIZING BM SYSTEM...</div>
-<div class="boot-line">LOADING SECURITY MODULES...</div>
-<div class="boot-line">DEPLOYING NEURAL NETWORK...</div>
+<!-- NAV -->
+<nav>
+<h2>Cyber Portfolio</h2>
+<div>
+<a href="#summary">Summary</a>
+<a href="#skills">Skills</a>
+<a href="#exp">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Cybersecurity & Information Security Professional</h1>
+<p>
+Cybersecurity graduate specializing in penetration testing, system security, IT support, and secure web development.
+</p>
+
+<a class="btn" href="CV.pdf" download>Download CV</a>
+<a class="btn" href="#contact">Hire Me</a>
 </div>
 
-<!-- HUD -->
-<div id="hud">
-SYSTEM: ONLINE<br>
-SECURITY: MAXIMUM<br>
-NODE STATUS: ACTIVE
+<!-- SUMMARY -->
+<section id="summary">
+<h2>Professional Summary</h2>
+<p>
+Detail-oriented cybersecurity and information security professional with hands-on experience in ethical hacking, system administration, web development support, and IT infrastructure. Strong understanding of penetration testing methodologies, network security, and secure system design.
+</p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<h2>Core Skills</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Cybersecurity</h3>
+<p>Penetration Testing, Vulnerability Assessment, Ethical Hacking</p>
+<span class="tag">Offensive Security</span>
 </div>
 
-<div class="title">BM // GOD MODE</div>
-
-<!-- TERMINAL -->
-<div id="terminal">
-> SYSTEM READY<br><br>
-<input id="input" placeholder="type command...">
+<div class="card">
+<h3>Networking</h3>
+<p>LAN/WAN, CCTV Systems, Network Cabling, Security Protocols</p>
 </div>
 
-<!-- AI PANEL -->
-<div id="ai">
-<div class="ai-msg">AI: Hello BM Operator 👋</div>
-<div class="ai-msg">Ask about: projects, skills, security</div>
+<div class="card">
+<h3>Development</h3>
+<p>PHP, Laravel, MySQL, WordPress, Basic Web Security</p>
 </div>
 
-<script>
+<div class="card">
+<h3>Forensics</h3>
+<p>System analysis, security auditing, incident response basics</p>
+</div>
 
-/* =====================
-   BOOT SEQUENCE
-===================== */
-setTimeout(()=>{
-document.getElementById("boot").style.display="none";
-},3000);
+</div>
+</section>
 
-/* =====================
-   SIMPLE AI ENGINE
-===================== */
-const ai=document.getElementById("ai");
+<!-- EXPERIENCE -->
+<section id="exp">
+<h2>Experience</h2>
 
-function aiReply(msg){
-let div=document.createElement("div");
-div.className="ai-msg";
+<div class="grid">
 
-if(msg.includes("project")){
-div.innerHTML="AI: You built a Laravel hotel system + WordPress security work.";
-}
-else if(msg.includes("skill")){
-div.innerHTML="AI: Cybersecurity, DevOps, Pentesting, Forensics.";
-}
-else{
-div.innerHTML="AI: Command not recognized in training data.";
-}
+<div class="card">
+<h3>ICT Attachment – Web Development & Design</h3>
+<p>Kenyatta University | 2025</p>
+<ul>
+<li>Supported website development and maintenance operations.</li>
+<li>Worked with WordPress-based institutional systems.</li>
+<li>Assisted in UI improvements, updates, and troubleshooting.</li>
+</ul>
+</div>
 
-ai.appendChild(div);
-}
+<div class="card">
+<h3>Cybersecurity & Forensics Trainee</h3>
+<p>2022 – Present</p>
+<ul>
+<li>Practiced penetration testing on vulnerable machines (Kioptrix, Brainpan, GoldenEye).</li>
+<li>Applied ethical hacking techniques and security testing.</li>
+</ul>
+</div>
 
-/* =====================
-   TERMINAL COMMANDS
-===================== */
-const input=document.getElementById("input");
-const terminal=document.getElementById("terminal");
+<div class="card">
+<h3>IT & Data Support Assistant</h3>
+<p>Wattline Technologies Ltd | 2023 – 2024</p>
+<ul>
+<li>Supported IT operations and system deployment tasks.</li>
+<li>Assisted in CCTV installation and structured cabling.</li>
+</ul>
+</div>
 
-input.addEventListener("keydown",(e)=>{
-if(e.key==="Enter"){
-let cmd=input.value.toLowerCase();
-terminal.innerHTML+="<br>> "+cmd+"<br>";
+<div class="card">
+<h3>Exam Invigilator</h3>
+<p>KASNEB | 2022</p>
+<ul>
+<li>Ensured compliance and integrity during examinations.</li>
+</ul>
+</div>
 
-if(cmd==="about"){
-terminal.innerHTML+="Cybersecurity Engineer - BM SYSTEM ACTIVE<br>";
-}
-else if(cmd==="projects"){
-terminal.innerHTML+="Venture Hotel System | WordPress Security | Network Lab<br>";
-}
-else if(cmd==="scan system"){
-terminal.innerHTML+="Scanning... ALL SYSTEMS SECURE 🔐<br>";
-}
-else{
-terminal.innerHTML+="Unknown command<br>";
-}
+</div>
+</section>
 
-aiReply(cmd);
-input.value="";
-terminal.scrollTop=terminal.scrollHeight;
-}
-});
+<!-- PROJECTS -->
+<section id="projects">
+<h2>Projects</h2>
 
-/* =====================
-   3D CYBER GLOBE
-===================== */
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
-const renderer=new THREE.WebGLRenderer({alpha:true});
-renderer.setSize(window.innerWidth,window.innerHeight);
-document.body.appendChild(renderer.domElement);
+<div class="grid">
 
-const geometry=new THREE.SphereGeometry(2,32,32);
-const material=new THREE.MeshBasicMaterial({
-color:0x38bdf8,
-wireframe:true
-});
+<div class="card">
+<h3>Venture Hotel Management System</h3>
+<p>Secure Laravel + MySQL system with authentication and role-based access.</p>
+<span class="tag">Full Stack</span>
+</div>
 
-const globe=new THREE.Mesh(geometry,material);
-scene.add(globe);
+<div class="card">
+<h3>WordPress Security Hardening</h3>
+<p>Performed security audits, updates, and performance optimization.</p>
+</div>
 
-camera.position.z=5;
+</div>
+</section>
 
-function animate(){
-requestAnimationFrame(animate);
-globe.rotation.y+=0.002;
-globe.rotation.x+=0.001;
-renderer.render(scene,camera);
-}
-animate();
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
 
-/* =====================
-   RESIZE FIX
-===================== */
-window.addEventListener("resize",()=>{
-camera.aspect=window.innerWidth/window.innerHeight;
-camera.updateProjectionMatrix();
-renderer.setSize(window.innerWidth,window.innerHeight);
-});
+<form>
+<input type="text" placeholder="Full Name">
+<input type="email" placeholder="Email Address">
+<textarea placeholder="Your Message"></textarea>
+<button class="btn" type="submit">Send Message</button>
+</form>
 
-</script>
+<p style="margin-top:15px;color:#94a3b8;">
+Email: yourname@email.com | LinkedIn: your-profile
+</p>
+
+</section>
+
+<footer>
+© 2026 Cybersecurity Portfolio | Built for career opportunities
+</footer>
 
 </body>
 </html>
