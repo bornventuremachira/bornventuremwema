@@ -3,46 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Cybersecurity & Digital Forensics Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-/* =========================
-   GLOBAL
-========================= */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+/* ================= GLOBAL ================= */
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:Inter;
 background:#050814;
 color:#e2e8f0;
-line-height:1.6;
 overflow-x:hidden;
 }
 
-/* =========================
-   CYBER GRID BACKGROUND
-========================= */
-body::before{
-content:"";
+/* ================= NODES ================= */
+#nodes{
 position:fixed;
-inset:0;
-background:
-linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
-background-size:50px 50px;
-z-index:-2;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-3;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* ================= NAV ================= */
 nav{
 position:fixed;
 top:0;
@@ -51,8 +40,8 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:14px 26px;
-background:rgba(5,8,20,0.85);
-backdrop-filter:blur(16px);
+background:rgba(5,8,20,0.9);
+backdrop-filter:blur(12px);
 border-bottom:1px solid rgba(56,189,248,0.25);
 z-index:1000;
 }
@@ -73,60 +62,53 @@ color:#cbd5e1;
 text-decoration:none;
 font-size:13px;
 padding:6px 10px;
-border-radius:6px;
-transition:0.3s;
 }
 
-.nav-links a:hover{
-color:#38bdf8;
-background:rgba(56,189,248,0.1);
-}
-
-.menu-toggle{
-display:none;
-font-size:22px;
-color:#38bdf8;
-cursor:pointer;
-}
-
-@media(max-width:768px){
-.menu-toggle{display:block;}
-
-.nav-links{
-position:absolute;
-top:60px;
-left:0;
-right:0;
-flex-direction:column;
-background:rgba(5,8,20,0.95);
-display:none;
-padding:10px 0;
-}
-
-.nav-links.show{display:flex;}
-
-.nav-links a{
-padding:14px 20px;
-}
-}
-
-/* =========================
-   HERO
-========================= */
+/* ================= HERO ================= */
 .hero{
-padding:140px 20px 60px;
-text-align:center;
+padding:140px 20px 40px;
 }
 
-.hero h1{
+.hero-container{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:center;
+gap:40px;
+}
+
+.profile{
+width:180px;
+height:180px;
+border-radius:50%;
+overflow:hidden;
+border:3px solid #38bdf8;
+animation:glow 2s infinite alternate;
+}
+
+.profile img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+@keyframes glow{
+from{box-shadow:0 0 10px #38bdf8;}
+to{box-shadow:0 0 30px #38bdf8;}
+}
+
+.hero-text{
+max-width:600px;
+}
+
+.hero-text h1{
 font-size:2.6rem;
 font-family:Orbitron;
 color:#38bdf8;
 }
 
-.hero p{
-max-width:800px;
-margin:10px auto;
+.hero-text p{
+margin:10px 0;
 color:#94a3b8;
 }
 
@@ -141,9 +123,79 @@ text-decoration:none;
 font-weight:600;
 }
 
-/* =========================
-   SECTIONS
-========================= */
+.btn i{margin-right:6px;}
+
+/* ================= TERMINALS ================= */
+.terminal,
+.live-terminal{
+background:#020617;
+border-radius:10px;
+padding:20px;
+max-width:850px;
+margin:25px auto;
+font-family:monospace;
+white-space:pre-line;
+}
+
+.terminal{
+border:1px solid #38bdf8;
+color:#22c55e;
+}
+
+.live-terminal{
+border:1px solid #22c55e;
+color:#22c55e;
+height:220px;
+overflow:hidden;
+position:relative;
+}
+
+.live-terminal::after{
+content:"";
+position:absolute;
+bottom:10px;
+right:10px;
+width:8px;
+height:14px;
+background:#22c55e;
+animation:blink 0.8s infinite;
+}
+
+@keyframes blink{
+50%{opacity:0;}
+}
+
+/* ================= GLITCH DIVIDER (NEW) ================= */
+.section-divider{
+height:40px;
+background:transparent;
+position:relative;
+margin:10px 0;
+}
+
+.section-divider::before,
+.section-divider::after{
+content:"";
+position:absolute;
+width:100%;
+height:2px;
+background:linear-gradient(90deg,transparent,#38bdf8,transparent);
+animation:glitch 1.5s infinite;
+}
+
+.section-divider::after{
+top:10px;
+background:linear-gradient(90deg,transparent,#22c55e,transparent);
+animation-delay:0.3s;
+}
+
+@keyframes glitch{
+0%{transform:translateX(-10px);opacity:0.3;}
+50%{transform:translateX(10px);opacity:1;}
+100%{transform:translateX(-10px);opacity:0.3;}
+}
+
+/* ================= SECTIONS ================= */
 section{
 padding:70px 20px;
 max-width:1100px;
@@ -161,9 +213,6 @@ font-family:Orbitron;
 color:#38bdf8;
 }
 
-/* =========================
-   GRID
-========================= */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -183,19 +232,7 @@ transform:translateY(-5px);
 border-color:#38bdf8;
 }
 
-.tag{
-display:inline-block;
-margin-top:8px;
-padding:4px 10px;
-font-size:11px;
-background:#0ea5e9;
-color:black;
-border-radius:20px;
-}
-
-/* =========================
-   CONTACT
-========================= */
+/* ================= CONTACT ================= */
 .contact-box{
 background:rgba(15,23,42,0.6);
 padding:25px;
@@ -216,30 +253,27 @@ background:#0f172a;
 color:white;
 }
 
-/* =========================
-   WHATSAPP
-========================= */
-.whatsapp-btn{
+/* ================= WHATSAPP ================= */
+.whatsapp{
 position:fixed;
-bottom:80px;
+bottom:20px;
 right:20px;
 background:#25D366;
+width:55px;
+height:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:26px;
 color:white;
-padding:12px 16px;
-border-radius:50px;
-text-decoration:none;
-font-weight:600;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 footer{
 text-align:center;
 padding:25px;
-border-top:1px solid #1e3a8a;
 color:#64748b;
-font-size:13px;
 }
 
 </style>
@@ -247,12 +281,11 @@ font-size:13px;
 
 <body>
 
-<!-- NAV -->
+<canvas id="nodes"></canvas>
+
 <nav>
 <h2>Cyber Portfolio</h2>
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-<div class="nav-links" id="navLinks">
+<div class="nav-links">
 <a href="#summary">Summary</a>
 <a href="#skills">Skills</a>
 <a href="#exp">Experience</a>
@@ -266,19 +299,36 @@ font-size:13px;
 
 <!-- HERO -->
 <div class="hero">
-<h1>Cybersecurity & Digital Forensics Professional</h1>
-<p>Penetration Testing • Software Development • Digital Forensics • Secure Systems Engineering</p>
+<div class="hero-container">
 
-<a class="btn"
-href="https://wa.me/254798802545?text=Hi%20I%20viewed%20your%20cybersecurity%20portfolio%20and%20would%20like%20to%20connect"
-target="_blank">
-WhatsApp Me
-</a>
-
-<a class="btn" href="CV.pdf" download>Download CV</a>
+<div class="profile">
+<img src="https://scontent.fnbo15-1.fna.fbcdn.net/v/t39.30808-1/462119254_1676134492952299_6035573945069443549_n.jpg?stp=c0.0.723.723a_dst-jpg_s200x200_tt6&_nc_cat=109&ccb=1-7&_nc_sid=1d2534&_nc_ohc=1OZqfMXwe-EQ7kNvwFuZtKh&_nc_oc=Adrf3csXyjaatacauhg3OC12FFG6-NY8d6qkupFd_IM-IIE7Cibl2iED1madZq7wMLc&_nc_pt=5&_nc_zt=24&_nc_ht=scontent.fnbo15-1.fna&_nc_gid=vlJZdMZuguDQg2x8Q65oRw&_nc_ss=7a389&oh=00_Af26wJ8CGlSaQpZs4IDzEqoPGYVdeYCZ1kJSNagOXFcg0g&oe=69E1F129g">
 </div>
 
-<!-- SUMMARY -->
+<div class="hero-text">
+<h1>Bornventure Machira Mwema</h1>
+<p>Penetration Testing • Software Development • Digital Forensics • Secure Systems Engineering</p>
+
+<a class="btn" href="https://wa.me/254798802545">
+<i class="fab fa-whatsapp"></i> WhatsApp Me
+</a>
+
+<a class="btn" href="CV.pdf" download>
+<i class="fas fa-download"></i> Download CV
+</a>
+</div>
+
+</div>
+</div>
+
+<!-- WHOAMI -->
+<div class="terminal" id="terminal"></div>
+
+<!-- LIVE TERMINAL -->
+<div class="live-terminal" id="liveTerminal"></div>
+
+<!-- ================= FULL CONTENT RESTORED ================= -->
+
 <section id="summary">
 <div class="chapter"><h2>Professional Summary</h2></div>
 <p>
@@ -288,160 +338,77 @@ Strong focus on building secure systems, analyzing cyber threats, and applying f
 </p>
 </section>
 
-<!-- SKILLS -->
+<div class="section-divider"></div>
+
 <section id="skills">
 <div class="chapter"><h2>Core Skills</h2></div>
-
 <div class="grid">
-
-<div class="card">
-<h3>Cybersecurity</h3>
-<p>Penetration Testing, Vulnerability Assessment, Ethical Hacking</p>
-</div>
-
-<div class="card">
-<h3>Software Development</h3>
-<p>Laravel (Frontend & Backend), PHP, MySQL, API Integration</p>
-<span class="tag">Full Stack</span>
-</div>
-
-<div class="card">
-<h3>Digital Forensics</h3>
-<p>Memory Analysis, Disk Imaging, Network Forensics, Evidence Handling</p>
-</div>
-
-<div class="card">
-<h3>Systems & Networking</h3>
-<p>Linux, Windows Server, CCTV, LAN/WAN</p>
-</div>
-
+<div class="card"><h3>Cybersecurity</h3><p>Penetration Testing, Vulnerability Assessment, Ethical Hacking</p></div>
+<div class="card"><h3>Software Development</h3><p>Laravel (Frontend & Backend), PHP, MySQL, API Integration</p><span class="tag">Full Stack</span></div>
+<div class="card"><h3>Digital Forensics</h3><p>Memory Analysis, Disk Imaging, Network Forensics, Evidence Handling</p></div>
+<div class="card"><h3>Systems & Networking</h3><p>Linux, Windows Server, CCTV, LAN/WAN</p></div>
 </div>
 </section>
 
-<!-- EXPERIENCE -->
+<div class="section-divider"></div>
+
 <section id="exp">
 <div class="chapter"><h2>Experience</h2></div>
-
 <div class="grid">
-
-<div class="card">
-<h3>Kenyatta University Attachment</h3>
-<p>Web development, WordPress support, UI/UX improvements</p>
-</div>
-
-<div class="card">
-<h3>IT Support – Wattline Technologies</h3>
-<p>Networking, CCTV installation, IT infrastructure support</p>
-</div>
-
-<div class="card">
-<h3>Personal Cybersecurity Projects</h3>
-<p>Hands-on exploitation of Kioptrix, Brainpan, GoldenEye systems</p>
-</div>
-
-<div class="card">
-<h3>Software Development Projects</h3>
-<p>Built Laravel-based systems with authentication, CRUD, and database integration (frontend + backend)</p>
-</div>
-
+<div class="card"><h3>Kenyatta University Attachment</h3><p>Web development, WordPress support, UI/UX improvements</p></div>
+<div class="card"><h3>IT Support – Wattline Technologies</h3><p>Networking, CCTV installation, IT infrastructure support</p></div>
+<div class="card"><h3>Personal Cybersecurity Projects</h3><p>Kioptrix, Brainpan, GoldenEye exploitation labs</p></div>
+<div class="card"><h3>Software Development Projects</h3><p>Laravel systems with authentication, CRUD, database integration</p></div>
 </div>
 </section>
 
-<!-- PROJECTS -->
+<div class="section-divider"></div>
+
 <section id="projects">
 <div class="chapter"><h2>Security Lab Projects</h2></div>
-
 <div class="grid">
-
-<div class="card">
-<h3>Kioptrix</h3>
-<p>Linux exploitation, privilege escalation, service enumeration</p>
-</div>
-
-<div class="card">
-<h3>Brainpan</h3>
-<p>Buffer overflow exploitation and reverse engineering</p>
-</div>
-
-<div class="card">
-<h3>GoldenEye</h3>
-<p>Web vulnerability exploitation and authentication attacks</p>
-</div>
-
+<div class="card"><h3>Kioptrix</h3><p>Linux exploitation, privilege escalation, service enumeration</p></div>
+<div class="card"><h3>Brainpan</h3><p>Buffer overflow exploitation and reverse engineering</p></div>
+<div class="card"><h3>GoldenEye</h3><p>Web vulnerability exploitation and authentication attacks</p></div>
 </div>
 </section>
 
-<!-- DIGITAL FORENSICS -->
+<div class="section-divider"></div>
+
 <section id="forensics">
 <div class="chapter"><h2>Digital Forensics Projects</h2></div>
-
 <div class="grid">
-
-<div class="card">
-<h3>Network Traffic Investigation</h3>
-<p>Packet analysis to detect anomalies and reconstruct communication patterns.</p>
-</div>
-
-<div class="card">
-<h3>Memory Forensics (RAM Analysis)</h3>
-<p>Analysis of volatile memory to identify malicious processes and hidden artifacts.</p>
-</div>
-
-<div class="card">
-<h3>Deleted File Recovery</h3>
-<p>Recovered and analyzed deleted files using forensic recovery techniques.</p>
-</div>
-
-<div class="card">
-<h3>Disk Imaging & Evidence Preservation</h3>
-<p>Created forensic disk images while maintaining chain of custody.</p>
-</div>
-
+<div class="card"><h3>Network Traffic Investigation</h3><p>Packet analysis to detect anomalies and reconstruct communication patterns.</p></div>
+<div class="card"><h3>Memory Forensics</h3><p>Volatile memory analysis for malicious processes and artifacts.</p></div>
+<div class="card"><h3>Deleted File Recovery</h3><p>Recovered and analyzed deleted files using forensic tools.</p></div>
+<div class="card"><h3>Disk Imaging</h3><p>Forensic imaging with chain of custody preservation.</p></div>
 </div>
 </section>
 
-<!-- CERTIFICATIONS -->
+<div class="section-divider"></div>
+
 <section id="certs">
 <div class="chapter"><h2>Certifications</h2></div>
-
 <div class="grid">
-
-<div class="card">
-<h3>Blockchain Security Examiner (CBSE)</h3>
-<p>Alison</p>
-</div>
-
-<div class="card">
-<h3>Digital Network Security</h3>
-<p>Alison</p>
-</div>
-
-<div class="card">
-<h3>CCTV & AutoCAD Systems</h3>
-<p>Alison</p>
-</div>
-
-<div class="card">
-<h3>Social Media Cybersecurity</h3>
-<p>Alison</p>
-</div>
-
+<div class="card"><h3>Blockchain Security Examiner</h3><p>Alison</p></div>
+<div class="card"><h3>Digital Network Security</h3><p>Alison</p></div>
+<div class="card"><h3>CCTV Systems</h3><p>Alison</p></div>
+<div class="card"><h3>Social Media Cybersecurity</h3><p>Alison</p></div>
 </div>
 </section>
 
-<!-- EDUCATION -->
+<div class="section-divider"></div>
+
 <section id="edu">
 <div class="chapter"><h2>Education</h2></div>
-
 <div class="card">
-<h3>BSc Information Security & Forensics</h3>
-<p>KCA University | 2020–2025</p>
+BSc Information Security & Forensics — KCA University (2020–2025)
 <span class="tag">Second Class Honours (Upper Division)</span>
 </div>
-
 </section>
 
-<!-- CONTACT -->
+<div class="section-divider"></div>
+
 <section id="contact">
 <div class="chapter"><h2>Contact</h2></div>
 
@@ -450,29 +417,111 @@ Strong focus on building secure systems, analyzing cyber threats, and applying f
 <input type="email" placeholder="Email">
 <textarea placeholder="Message"></textarea>
 
-<button class="btn"
-onclick="window.open('https://wa.me/254798802545?text=Hi%20I%20am%20interested%20in%20your%20cybersecurity%20profile','_blank')">
+<button class="btn" onclick="window.open('https://wa.me/254798802545')">
 Send via WhatsApp
 </button>
 </div>
 </section>
 
-<!-- WHATSAPP -->
-<a class="whatsapp-btn"
-href="https://wa.me/254798802545?text=Hi%20I%20viewed%20your%20portfolio"
-target="_blank">
-💬 WhatsApp
+<a class="whatsapp" href="https://wa.me/254798802545">
+<i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- FOOTER -->
-<footer>
-<p>© 2026 All Rights Reserved | Cybersecurity & Digital Forensics Portfolio</p>
-</footer>
+<footer>© 2026 Cyber Portfolio</footer>
 
 <script>
-function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("show");
+
+/* NODES */
+const canvas=document.getElementById("nodes");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5),
+vy:(Math.random()-0.5)
+});
 }
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width) p.vx*=-1;
+if(p.y<0||p.y>canvas.height) p.vy*=-1;
+
+ctx.fillStyle="#38bdf8";
+ctx.fillRect(p.x,p.y,2,2);
+});
+
+for(let i=0;i<particles.length;i++){
+for(let j=i+1;j<particles.length;j++){
+let dx=particles[i].x-particles[j].x;
+let dy=particles[i].y-particles[j].y;
+let dist=Math.sqrt(dx*dx+dy*dy);
+
+if(dist<120){
+ctx.strokeStyle="rgba(56,189,248,0.2)";
+ctx.beginPath();
+ctx.moveTo(particles[i].x,particles[i].y);
+ctx.lineTo(particles[j].x,particles[j].y);
+ctx.stroke();
+}
+}
+}
+
+requestAnimationFrame(animate);
+}
+animate();
+
+/* WHOAMI */
+const text=`> whoami
+
+Name: Bornventure Machira Mwema
+Role: Cybersecurity & Digital Forensics Specialist
+Skills: Penetration Testing | Laravel | Networking | Forensics
+Focus: Secure Systems | Threat Analysis | Incident Response
+Status: Actively seeking opportunities...
+`;
+
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("terminal").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,20);
+}
+}
+type();
+
+/* LIVE TERMINAL */
+const logs=[
+"[INFO] Initializing secure shell...",
+"[OK] Firewall active",
+"[SCAN] Network sweep running",
+"[ALERT] Suspicious packet detected",
+"[OK] System stable"
+];
+
+let l=0;
+const live=document.getElementById("liveTerminal");
+
+function stream(){
+live.innerHTML+=logs[l]+"<br>";
+live.scrollTop=live.scrollHeight;
+l++;
+if(l>=logs.length) l=0;
+}
+
+setInterval(stream,900);
+
 </script>
 
 </body>
