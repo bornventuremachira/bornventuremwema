@@ -3,48 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOC Cybersecurity Portfolio</title>
+<title>SOC Cyber Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================
-   BASE
+   GLOBAL
 ========================= */
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:Inter;
-background:black;
+background:#050814;
 color:#e2e8f0;
 overflow-x:hidden;
 line-height:1.6;
 }
 
 /* =========================
-   MATRIX BACKGROUND (UNCHANGED STYLE)
+   HERO MATRIX ONLY
 ========================= */
 #matrix{
-position:fixed;
+position:absolute;
 top:0;
 left:0;
 width:100%;
-height:100%;
+height:100vh; /* ONLY FIRST SECTION */
 z-index:-3;
 background:black;
 }
 
-body::before{
+.hero-overlay{
+position:relative;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero-overlay::before{
 content:"";
-position:fixed;
+position:absolute;
 inset:0;
 background:rgba(0,0,0,0.55);
-z-index:-2;
+z-index:-1;
 }
 
 /* =========================
-   NAVBAR
+   NAV
 ========================= */
 nav{
 position:fixed;
@@ -54,7 +64,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:14px 26px;
-background:rgba(0,0,0,0.75);
+background:rgba(0,0,0,0.8);
 backdrop-filter:blur(10px);
 border-bottom:1px solid rgba(0,255,136,0.2);
 z-index:1000;
@@ -75,74 +85,15 @@ gap:12px;
 color:#cbd5e1;
 text-decoration:none;
 font-size:13px;
-padding:6px 10px;
-border-radius:6px;
 }
 
-.nav-links a:hover{
-color:#00ff88;
-background:rgba(0,255,136,0.08);
-}
-
-.menu-toggle{
-display:none;
-font-size:22px;
-color:#00ff88;
-cursor:pointer;
-}
+.menu-toggle{display:none;color:#00ff88;cursor:pointer;}
 
 @media(max-width:768px){
 .menu-toggle{display:block;}
-
-.nav-links{
-position:absolute;
-top:60px;
-left:0;
-right:0;
-flex-direction:column;
-background:black;
-display:none;
-padding:10px 0;
-border-bottom:1px solid rgba(0,255,136,0.2);
-}
-
+.nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:black;flex-direction:column;padding:10px 0;}
 .nav-links.show{display:flex;}
-
 .nav-links a{padding:14px 20px;}
-}
-
-/* =========================
-   HERO
-========================= */
-.hero{
-padding:140px 20px 60px;
-text-align:center;
-}
-
-.hero h1{
-font-size:2.6rem;
-font-family:Orbitron;
-color:#00ff88;
-}
-
-.hero p{
-color:#94a3b8;
-max-width:800px;
-margin:auto;
-}
-
-/* =========================
-   BUTTON
-========================= */
-.btn{
-display:inline-block;
-margin:10px 6px;
-padding:10px 18px;
-background:#00ff88;
-color:black;
-border-radius:8px;
-text-decoration:none;
-font-weight:700;
 }
 
 /* =========================
@@ -181,43 +132,63 @@ border-radius:12px;
 border:1px solid rgba(0,255,136,0.15);
 }
 
-.card:hover{
-transform:translateY(-5px);
-border-color:#00ff88;
+/* =========================
+   PROJECTS ANIMATION (DIFFERENT STYLE)
+   FLOATING DATA PACKETS
+========================= */
+#projects{
+position:relative;
+overflow:hidden;
+background:linear-gradient(180deg,#050814,#0a1a2f);
+}
+
+.packet{
+position:absolute;
+width:6px;
+height:6px;
+background:#38bdf8;
+border-radius:50%;
+opacity:0.7;
+animation:move 6s linear infinite;
+}
+
+@keyframes move{
+0%{transform:translateY(0) translateX(0);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(-500px) translateX(200px);opacity:0;}
 }
 
 /* =========================
-   CONTACT NODE NETWORK
+   CONTACT (BLUE NODE NETWORK FULL SECTION)
 ========================= */
-.contact-wrapper{
+#contact{
+background:#061a33; /* BLUE TECH BACKGROUND */
 position:relative;
-height:320px;
-background:rgba(0,0,0,0.4);
-border-radius:14px;
-border:1px solid rgba(0,255,136,0.2);
 overflow:hidden;
 }
 
-/* node canvas */
 #nodes{
 position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
+z-index:0;
 }
 
-/* form on top */
-.contact-form{
+.contact-box{
 position:relative;
 z-index:2;
-padding:25px;
 max-width:500px;
 margin:auto;
+background:rgba(0,0,0,0.4);
+padding:25px;
+border-radius:14px;
+border:1px solid rgba(56,189,248,0.3);
 }
 
-.contact-form input,
-.contact-form textarea{
+.contact-box input,
+.contact-box textarea{
 width:100%;
 margin:8px 0;
 padding:12px;
@@ -225,6 +196,19 @@ border:none;
 border-radius:8px;
 background:#0f172a;
 color:white;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn{
+display:inline-block;
+padding:10px 18px;
+background:#00ff88;
+color:black;
+border-radius:8px;
+text-decoration:none;
+font-weight:700;
 }
 
 /* =========================
@@ -238,8 +222,6 @@ background:#25D366;
 color:white;
 padding:12px 16px;
 border-radius:50px;
-text-decoration:none;
-font-weight:600;
 }
 
 /* =========================
@@ -250,7 +232,6 @@ text-align:center;
 padding:25px;
 border-top:1px solid rgba(0,255,136,0.2);
 color:#64748b;
-font-size:13px;
 }
 
 </style>
@@ -258,305 +239,163 @@ font-size:13px;
 
 <body>
 
-<!-- MATRIX BACKGROUND (UNCHANGED) -->
+<!-- HERO MATRIX -->
 <canvas id="matrix"></canvas>
 
-<!-- NAV -->
 <nav>
 <h2>SOC TERMINAL</h2>
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
 <div class="nav-links" id="navLinks">
 <a href="#summary">Summary</a>
-<a href="#skills">Skills</a>
-<a href="#exp">Experience</a>
 <a href="#projects">Projects</a>
-<a href="#forensics">Forensics</a>
-<a href="#certs">Certs</a>
-<a href="#edu">Education</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-<h1>CYBERSECURITY & SOC ANALYST</h1>
-<p>Threat Analysis • Penetration Testing • Digital Forensics • Secure Systems Engineering</p>
-
+<div class="hero-overlay">
+<h1 style="font-family:Orbitron;color:#00ff88;font-size:2.6rem;">
+CYBERSECURITY ANALYST
+</h1>
+<p>Threat Detection • Forensics • Secure Development</p>
 <a class="btn" href="https://wa.me/254798802545" target="_blank">CONTACT</a>
-<a class="btn" href="CV.pdf" download>DOWNLOAD CV</a>
 </div>
 
 <!-- SUMMARY -->
 <section id="summary">
 <div class="chapter"><h2>Professional Summary</h2></div>
 <p>
-Cybersecurity and SOC-focused professional specializing in threat detection, system hardening, digital forensics, and secure software development. Experienced in analyzing network behavior, identifying malicious activity, and supporting incident response operations through structured investigative techniques.
-
-Strong background in full-stack Laravel development (frontend and backend), enabling secure system design, API integration, and database-driven application development aligned with cybersecurity principles.
+SOC-focused cybersecurity and software engineering professional specializing in threat monitoring, penetration testing, digital forensics, and full-stack Laravel development.
 </p>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-<div class="chapter"><h2>Core Skills</h2></div>
-
-<div class="grid">
-
-<div class="card">
-<h3>Cybersecurity</h3>
-<p>Penetration Testing, Vulnerability Assessment</p>
-</div>
-
-<div class="card">
-<h3>Software Development</h3>
-<p>Laravel Full Stack, PHP, MySQL, APIs</p>
-</div>
-
-<div class="card">
-<h3>Digital Forensics</h3>
-<p>Memory, Disk, Network Forensics</p>
-</div>
-
-<div class="card">
-<h3>Systems</h3>
-<p>Linux, Windows Server, Networking</p>
-</div>
-
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="exp">
-<div class="chapter"><h2>Experience</h2></div>
-
-<div class="grid">
-
-<div class="card">
-<h3>Kenyatta University Attachment</h3>
-<p>Web development, WordPress, UI/UX support</p>
-</div>
-
-<div class="card">
-<h3>Wattline Technologies</h3>
-<p>IT support, CCTV, networking infrastructure</p>
-</div>
-
-<div class="card">
-<h3>Cybersecurity Labs</h3>
-<p>Kioptrix, Brainpan, GoldenEye exploitation</p>
-</div>
-
-<div class="card">
-<h3>Laravel Development</h3>
-<p>Full-stack systems with authentication, dashboards, CRUD</p>
-</div>
-
-</div>
-</section>
-
-<!-- PROJECTS -->
+<!-- PROJECTS (DIFFERENT ANIMATION) -->
 <section id="projects">
 <div class="chapter"><h2>Security Projects</h2></div>
 
 <div class="grid">
-
-<div class="card">
-<h3>Kioptrix</h3>
-<p>Privilege escalation & Linux exploitation</p>
+<div class="card">Kioptrix Exploitation</div>
+<div class="card">Brainpan Buffer Overflow</div>
+<div class="card">GoldenEye Web Testing</div>
 </div>
 
-<div class="card">
-<h3>Brainpan</h3>
-<p>Buffer overflow & reverse engineering</p>
-</div>
-
-<div class="card">
-<h3>GoldenEye</h3>
-<p>Web application security testing</p>
-</div>
-
-</div>
+<!-- floating packets -->
+<div id="packets"></div>
 </section>
 
-<!-- FORENSICS -->
-<section id="forensics">
-<div class="chapter"><h2>Digital Forensics</h2></div>
-
-<div class="grid">
-
-<div class="card">
-<h3>Network Traffic</h3>
-<p>Packet inspection and anomaly detection</p>
-</div>
-
-<div class="card">
-<h3>Memory Forensics</h3>
-<p>RAM analysis for malware tracing</p>
-</div>
-
-<div class="card">
-<h3>Deleted File Recovery</h3>
-<p>Recovered and analyzed erased data artifacts</p>
-</div>
-
-<div class="card">
-<h3>Disk Imaging</h3>
-<p>Evidence preservation and chain of custody</p>
-</div>
-
-</div>
-</section>
-
-<!-- CERTS -->
-<section id="certs">
-<div class="chapter"><h2>Certifications</h2></div>
-
-<div class="grid">
-
-<div class="card">
-<h3>Blockchain Security Examiner</h3>
-<p>Alison</p>
-</div>
-
-<div class="card">
-<h3>Digital Network Security</h3>
-<p>Alison</p>
-</div>
-
-<div class="card">
-<h3>CCTV Systems</h3>
-<p>Alison</p>
-</div>
-
-</div>
-</section>
-
-<!-- EDUCATION -->
-<section id="edu">
-<div class="chapter"><h2>Education</h2></div>
-
-<div class="card">
-<h3>BSc Information Security & Forensics</h3>
-<p>KCA University | 2020–2025</p>
-</div>
-
-</section>
-
-<!-- CONTACT WITH NODE NETWORK -->
+<!-- CONTACT (BLUE NODE NETWORK) -->
 <section id="contact">
-<div class="chapter"><h2>Contact</h2></div>
-
-<div class="contact-wrapper">
+<div class="chapter"><h2>Contact Network</h2></div>
 
 <canvas id="nodes"></canvas>
 
-<div class="contact-form">
-<input type="text" placeholder="Name">
-<input type="email" placeholder="Email">
+<div class="contact-box">
+<input placeholder="Name">
+<input placeholder="Email">
 <textarea placeholder="Message"></textarea>
-
-<button class="btn"
-onclick="window.open('https://wa.me/254798802545','_blank')">
+<button class="btn" onclick="window.open('https://wa.me/254798802545','_blank')">
 Send via WhatsApp
 </button>
-
-</div>
 </div>
 </section>
 
-<!-- WHATSAPP FLOAT -->
-<a class="whatsapp-btn" href="https://wa.me/254798802545" target="_blank">
-💬 WhatsApp
-</a>
-
-<!-- FOOTER -->
 <footer>
-<p>© 2026 SOC Cybersecurity Portfolio</p>
+© 2026 SOC Cyber Portfolio
 </footer>
 
 <script>
 
 /* =========================
-   MATRIX BACKGROUND
+   MATRIX (HERO ONLY)
 ========================= */
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+const m = document.getElementById("matrix");
+const ctx = m.getContext("2d");
+m.width=window.innerWidth;
+m.height=window.innerHeight;
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*";
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
+let letters="01ABCDEF123456789";
+let font=14;
+let cols=m.width/font;
+let drops=Array(Math.floor(cols)).fill(1);
 
 function draw(){
-ctx.fillStyle = "rgba(0,0,0,0.08)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle = "#00ff88";
-ctx.font = fontSize + "px monospace";
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,m.width,m.height);
+ctx.fillStyle="#00ff88";
+ctx.font=font+"px monospace";
 
 for(let i=0;i<drops.length;i++){
-const text = letters[Math.floor(Math.random()*letters.length)];
-ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-if(drops[i]*fontSize > canvas.height && Math.random()>0.975){
-drops[i]=0;
-}
+let text=letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text,i*font,drops[i]*font);
+if(drops[i]*font>m.height&&Math.random()>0.975)drops[i]=0;
 drops[i]++;
 }
-
 requestAnimationFrame(draw);
 }
 draw();
 
 /* =========================
-   CONTACT NODE NETWORK
+   PROJECT FLOATING PACKETS
 ========================= */
-const nodeCanvas = document.getElementById("nodes");
-const nctx = nodeCanvas.getContext("2d");
+const packetContainer=document.getElementById("packets");
 
-nodeCanvas.width = nodeCanvas.offsetWidth;
-nodeCanvas.height = nodeCanvas.offsetHeight;
+for(let i=0;i<25;i++){
+let p=document.createElement("div");
+p.className="packet";
+p.style.left=Math.random()*100+"%";
+p.style.top=Math.random()*100+"%";
+p.style.animationDuration=(3+Math.random()*5)+"s";
+packetContainer.appendChild(p);
+}
 
-let nodes = [];
-for(let i=0;i<60;i++){
+/* =========================
+   CONTACT NODE NETWORK (BLUE)
+========================= */
+const c=document.getElementById("nodes");
+const cctx=c.getContext("2d");
+
+function resize(){
+c.width=c.offsetWidth;
+c.height=c.offsetHeight;
+}
+resize();
+window.addEventListener("resize",resize);
+
+let nodes=[];
+for(let i=0;i<40;i++){
 nodes.push({
-x:Math.random()*nodeCanvas.width,
-y:Math.random()*nodeCanvas.height,
+x:Math.random()*c.width,
+y:Math.random()*c.height,
 dx:(Math.random()-0.5)*1,
 dy:(Math.random()-0.5)*1
 });
 }
 
 function drawNodes(){
-nctx.clearRect(0,0,nodeCanvas.width,nodeCanvas.height);
+cctx.clearRect(0,0,c.width,c.height);
 
 nodes.forEach(n=>{
 n.x+=n.dx;
 n.y+=n.dy;
 
-if(n.x<0||n.x>nodeCanvas.width)n.dx*=-1;
-if(n.y<0||n.y>nodeCanvas.height)n.dy*=-1;
+if(n.x<0||n.x>c.width)n.dx*=-1;
+if(n.y<0||n.y>c.height)n.dy*=-1;
 
-nctx.beginPath();
-nctx.arc(n.x,n.y,2,"0","2*Math.PI");
-nctx.fillStyle="#00ff88";
-nctx.fill();
+cctx.fillStyle="#38bdf8";
+cctx.beginPath();
+cctx.arc(n.x,n.y,2,0,Math.PI*2);
+cctx.fill();
 });
 
 for(let i=0;i<nodes.length;i++){
 for(let j=i+1;j<nodes.length;j++){
-let dist=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);
-
-if(dist<100){
-nctx.strokeStyle="rgba(0,255,136,0.15)";
-nctx.beginPath();
-nctx.moveTo(nodes[i].x,nodes[i].y);
-nctx.lineTo(nodes[j].x,nodes[j].y);
-nctx.stroke();
+let d=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);
+if(d<120){
+cctx.strokeStyle="rgba(56,189,248,0.25)";
+cctx.beginPath();
+cctx.moveTo(nodes[i].x,nodes[i].y);
+cctx.lineTo(nodes[j].x,nodes[j].y);
+cctx.stroke();
 }
 }
 }
@@ -565,7 +404,7 @@ requestAnimationFrame(drawNodes);
 }
 drawNodes();
 
-/* MOBILE MENU */
+/* MENU */
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("show");
 }
