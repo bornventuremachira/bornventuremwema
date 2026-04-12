@@ -3,31 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity SOC Portfolio</title>
+<title>SOC Cybersecurity Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================
-   GLOBAL
+   BASE
 ========================= */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:Inter;
-color:#e2e8f0;
 background:black;
+color:#e2e8f0;
 overflow-x:hidden;
 line-height:1.6;
 }
 
 /* =========================
-   MATRIX BACKGROUND
+   MATRIX BACKGROUND (UNCHANGED STYLE)
 ========================= */
 #matrix{
 position:fixed;
@@ -39,7 +35,6 @@ z-index:-3;
 background:black;
 }
 
-/* dark overlay for readability */
 body::before{
 content:"";
 position:fixed;
@@ -59,9 +54,9 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:14px 26px;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.75);
 backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(0,255,120,0.2);
+border-bottom:1px solid rgba(0,255,136,0.2);
 z-index:1000;
 }
 
@@ -82,7 +77,6 @@ text-decoration:none;
 font-size:13px;
 padding:6px 10px;
 border-radius:6px;
-transition:0.3s;
 }
 
 .nav-links a:hover{
@@ -106,7 +100,7 @@ top:60px;
 left:0;
 right:0;
 flex-direction:column;
-background:rgba(0,0,0,0.95);
+background:black;
 display:none;
 padding:10px 0;
 border-bottom:1px solid rgba(0,255,136,0.2);
@@ -114,9 +108,7 @@ border-bottom:1px solid rgba(0,255,136,0.2);
 
 .nav-links.show{display:flex;}
 
-.nav-links a{
-padding:14px 20px;
-}
+.nav-links a{padding:14px 20px;}
 }
 
 /* =========================
@@ -136,9 +128,12 @@ color:#00ff88;
 .hero p{
 color:#94a3b8;
 max-width:800px;
-margin:10px auto;
+margin:auto;
 }
 
+/* =========================
+   BUTTON
+========================= */
 .btn{
 display:inline-block;
 margin:10px 6px;
@@ -184,7 +179,6 @@ background:rgba(15,23,42,0.75);
 padding:18px;
 border-radius:12px;
 border:1px solid rgba(0,255,136,0.15);
-transition:0.3s;
 }
 
 .card:hover{
@@ -192,30 +186,38 @@ transform:translateY(-5px);
 border-color:#00ff88;
 }
 
-.tag{
-display:inline-block;
-margin-top:8px;
-padding:4px 10px;
-font-size:11px;
-background:#00ff88;
-color:black;
-border-radius:20px;
-}
-
 /* =========================
-   CONTACT
+   CONTACT NODE NETWORK
 ========================= */
-.contact-box{
-background:rgba(15,23,42,0.6);
-padding:25px;
+.contact-wrapper{
+position:relative;
+height:320px;
+background:rgba(0,0,0,0.4);
 border-radius:14px;
 border:1px solid rgba(0,255,136,0.2);
-max-width:600px;
+overflow:hidden;
+}
+
+/* node canvas */
+#nodes{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+}
+
+/* form on top */
+.contact-form{
+position:relative;
+z-index:2;
+padding:25px;
+max-width:500px;
 margin:auto;
 }
 
-.contact-box input,
-.contact-box textarea{
+.contact-form input,
+.contact-form textarea{
 width:100%;
 margin:8px 0;
 padding:12px;
@@ -256,7 +258,7 @@ font-size:13px;
 
 <body>
 
-<!-- MATRIX CANVAS -->
+<!-- MATRIX BACKGROUND (UNCHANGED) -->
 <canvas id="matrix"></canvas>
 
 <!-- NAV -->
@@ -278,15 +280,10 @@ font-size:13px;
 
 <!-- HERO -->
 <div class="hero">
-<h1>CYBERSECURITY ANALYST | SOC TRAINEE</h1>
-<p>Penetration Testing • Digital Forensics • Secure Software Development • Threat Analysis</p>
+<h1>CYBERSECURITY & SOC ANALYST</h1>
+<p>Threat Analysis • Penetration Testing • Digital Forensics • Secure Systems Engineering</p>
 
-<a class="btn"
-href="https://wa.me/254798802545?text=Hi%20I%20viewed%20your%20cybersecurity%20portfolio%20and%20would%20like%20to%20connect"
-target="_blank">
-CONTACT ME
-</a>
-
+<a class="btn" href="https://wa.me/254798802545" target="_blank">CONTACT</a>
 <a class="btn" href="CV.pdf" download>DOWNLOAD CV</a>
 </div>
 
@@ -294,7 +291,9 @@ CONTACT ME
 <section id="summary">
 <div class="chapter"><h2>Professional Summary</h2></div>
 <p>
-Cybersecurity and Digital Forensics professional with experience in penetration testing, SOC-style monitoring, and secure software development using Laravel (frontend and backend). Skilled in identifying vulnerabilities, analyzing cyber threats, and performing forensic investigations on digital systems.
+Cybersecurity and SOC-focused professional specializing in threat detection, system hardening, digital forensics, and secure software development. Experienced in analyzing network behavior, identifying malicious activity, and supporting incident response operations through structured investigative techniques.
+
+Strong background in full-stack Laravel development (frontend and backend), enabling secure system design, API integration, and database-driven application development aligned with cybersecurity principles.
 </p>
 </section>
 
@@ -311,18 +310,17 @@ Cybersecurity and Digital Forensics professional with experience in penetration 
 
 <div class="card">
 <h3>Software Development</h3>
-<p>Laravel Full Stack, PHP, MySQL, API Integration</p>
-<span class="tag">Full Stack Dev</span>
+<p>Laravel Full Stack, PHP, MySQL, APIs</p>
 </div>
 
 <div class="card">
 <h3>Digital Forensics</h3>
-<p>Memory Analysis, Disk Imaging, Network Forensics</p>
+<p>Memory, Disk, Network Forensics</p>
 </div>
 
 <div class="card">
 <h3>Systems</h3>
-<p>Linux, Windows Server, Networking, CCTV</p>
+<p>Linux, Windows Server, Networking</p>
 </div>
 
 </div>
@@ -341,17 +339,17 @@ Cybersecurity and Digital Forensics professional with experience in penetration 
 
 <div class="card">
 <h3>Wattline Technologies</h3>
-<p>IT support, networking, CCTV installation</p>
+<p>IT support, CCTV, networking infrastructure</p>
 </div>
 
 <div class="card">
 <h3>Cybersecurity Labs</h3>
-<p>Hands-on exploitation: Kioptrix, Brainpan, GoldenEye</p>
+<p>Kioptrix, Brainpan, GoldenEye exploitation</p>
 </div>
 
 <div class="card">
-<h3>Laravel Projects</h3>
-<p>Built full-stack systems with authentication, CRUD, dashboards</p>
+<h3>Laravel Development</h3>
+<p>Full-stack systems with authentication, dashboards, CRUD</p>
 </div>
 
 </div>
@@ -365,7 +363,7 @@ Cybersecurity and Digital Forensics professional with experience in penetration 
 
 <div class="card">
 <h3>Kioptrix</h3>
-<p>Linux privilege escalation & enumeration</p>
+<p>Privilege escalation & Linux exploitation</p>
 </div>
 
 <div class="card">
@@ -388,23 +386,23 @@ Cybersecurity and Digital Forensics professional with experience in penetration 
 <div class="grid">
 
 <div class="card">
-<h3>Network Traffic Investigation</h3>
-<p>Packet capture and anomaly detection</p>
+<h3>Network Traffic</h3>
+<p>Packet inspection and anomaly detection</p>
 </div>
 
 <div class="card">
 <h3>Memory Forensics</h3>
-<p>RAM analysis for malicious process detection</p>
+<p>RAM analysis for malware tracing</p>
 </div>
 
 <div class="card">
 <h3>Deleted File Recovery</h3>
-<p>Recovered and analyzed deleted system files</p>
+<p>Recovered and analyzed erased data artifacts</p>
 </div>
 
 <div class="card">
 <h3>Disk Imaging</h3>
-<p>Evidence preservation with chain of custody</p>
+<p>Evidence preservation and chain of custody</p>
 </div>
 
 </div>
@@ -427,7 +425,7 @@ Cybersecurity and Digital Forensics professional with experience in penetration 
 </div>
 
 <div class="card">
-<h3>CCTV Systems & AutoCAD</h3>
+<h3>CCTV Systems</h3>
 <p>Alison</p>
 </div>
 
@@ -441,42 +439,47 @@ Cybersecurity and Digital Forensics professional with experience in penetration 
 <div class="card">
 <h3>BSc Information Security & Forensics</h3>
 <p>KCA University | 2020–2025</p>
-<span class="tag">Second Class Honours (Upper Division)</span>
 </div>
 
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT WITH NODE NETWORK -->
 <section id="contact">
 <div class="chapter"><h2>Contact</h2></div>
 
-<div class="contact-box">
+<div class="contact-wrapper">
+
+<canvas id="nodes"></canvas>
+
+<div class="contact-form">
 <input type="text" placeholder="Name">
 <input type="email" placeholder="Email">
 <textarea placeholder="Message"></textarea>
 
 <button class="btn"
-onclick="window.open('https://wa.me/254798802545?text=Hi%20I%20am%20interested%20in%20your%20cybersecurity%20profile','_blank')">
+onclick="window.open('https://wa.me/254798802545','_blank')">
 Send via WhatsApp
 </button>
+
+</div>
 </div>
 </section>
 
-<!-- WHATSAPP -->
-<a class="whatsapp-btn"
-href="https://wa.me/254798802545?text=Hi%20I%20viewed%20your%20portfolio"
-target="_blank">
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp-btn" href="https://wa.me/254798802545" target="_blank">
 💬 WhatsApp
 </a>
 
 <!-- FOOTER -->
 <footer>
-<p>© 2026 Cybersecurity & Digital Forensics Portfolio</p>
+<p>© 2026 SOC Cybersecurity Portfolio</p>
 </footer>
 
 <script>
 
-/* MATRIX EFFECT */
+/* =========================
+   MATRIX BACKGROUND
+========================= */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
@@ -509,10 +512,64 @@ requestAnimationFrame(draw);
 }
 draw();
 
+/* =========================
+   CONTACT NODE NETWORK
+========================= */
+const nodeCanvas = document.getElementById("nodes");
+const nctx = nodeCanvas.getContext("2d");
+
+nodeCanvas.width = nodeCanvas.offsetWidth;
+nodeCanvas.height = nodeCanvas.offsetHeight;
+
+let nodes = [];
+for(let i=0;i<60;i++){
+nodes.push({
+x:Math.random()*nodeCanvas.width,
+y:Math.random()*nodeCanvas.height,
+dx:(Math.random()-0.5)*1,
+dy:(Math.random()-0.5)*1
+});
+}
+
+function drawNodes(){
+nctx.clearRect(0,0,nodeCanvas.width,nodeCanvas.height);
+
+nodes.forEach(n=>{
+n.x+=n.dx;
+n.y+=n.dy;
+
+if(n.x<0||n.x>nodeCanvas.width)n.dx*=-1;
+if(n.y<0||n.y>nodeCanvas.height)n.dy*=-1;
+
+nctx.beginPath();
+nctx.arc(n.x,n.y,2,"0","2*Math.PI");
+nctx.fillStyle="#00ff88";
+nctx.fill();
+});
+
+for(let i=0;i<nodes.length;i++){
+for(let j=i+1;j<nodes.length;j++){
+let dist=Math.hypot(nodes[i].x-nodes[j].x,nodes[i].y-nodes[j].y);
+
+if(dist<100){
+nctx.strokeStyle="rgba(0,255,136,0.15)";
+nctx.beginPath();
+nctx.moveTo(nodes[i].x,nodes[i].y);
+nctx.lineTo(nodes[j].x,nodes[j].y);
+nctx.stroke();
+}
+}
+}
+
+requestAnimationFrame(drawNodes);
+}
+drawNodes();
+
 /* MOBILE MENU */
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("show");
 }
+
 </script>
 
 </body>
