@@ -41,18 +41,6 @@ z-index:-2;
 }
 
 /* =========================
-   🌌 (1) MATRIX GLOW PULSE - NEW
-========================= */
-body{
-animation: bodyGlow 6s infinite alternate;
-}
-
-@keyframes bodyGlow{
-0%{filter:brightness(1);}
-100%{filter:brightness(1.05);}
-}
-
-/* =========================
    NAVBAR
 ========================= */
 nav{
@@ -90,9 +78,7 @@ transition:0.3s;
 position:relative;
 }
 
-/* =========================
-   🔗 (5) NAV HOVER GLOW UNDERLINE - NEW
-========================= */
+/* NAV ANIMATION (ADDED) */
 .nav-links a::after{
 content:"";
 position:absolute;
@@ -173,15 +159,15 @@ font-weight:600;
 }
 
 /* =========================
-   SECTIONS
+   SECTION ANIMATION (SCROLL REVEAL)
 ========================= */
 section{
 padding:70px 20px;
 max-width:1100px;
 margin:auto;
 opacity:0;
-transform:translateY(30px);
-transition:0.8s ease;
+transform:translateY(25px);
+transition:0.7s ease;
 }
 
 section.visible{
@@ -189,6 +175,9 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* =========================
+   CHAPTER
+========================= */
 .chapter{
 border-left:4px solid #38bdf8;
 padding-left:10px;
@@ -219,9 +208,7 @@ position:relative;
 overflow:hidden;
 }
 
-/* =========================
-   🧠 (2) CARD SCAN EFFECT - NEW
-========================= */
+/* CARD SCAN EFFECT */
 .card::before{
 content:"";
 position:absolute;
@@ -235,7 +222,7 @@ transparent,
 rgba(56,189,248,0.15),
 transparent
 );
-transition:0.6s;
+transition:0.5s;
 }
 
 .card:hover::before{
@@ -258,7 +245,7 @@ border-radius:20px;
 }
 
 /* =========================
-   🔵 (4) FLOATING MICRO PARTICLES - NEW
+   FLOATING PARTICLES
 ========================= */
 .particle{
 position:fixed;
@@ -266,7 +253,7 @@ width:3px;
 height:3px;
 background:#38bdf8;
 border-radius:50%;
-opacity:0.25;
+opacity:0.2;
 z-index:-1;
 animation:floatUp linear infinite;
 }
@@ -325,10 +312,18 @@ color:#64748b;
 font-size:13px;
 }
 
+/* MATRIX GLOW (simple enhancement)
+========================= */
+canvas#matrix{
+filter:drop-shadow(0 0 6px #38bdf8);
+}
+
 </style>
 </head>
 
 <body>
+
+<canvas id="matrix"></canvas>
 
 <nav>
 <h2>Cyber Portfolio</h2>
@@ -350,22 +345,25 @@ font-size:13px;
 <h1>Cybersecurity & Digital Forensics Professional</h1>
 <p>Penetration Testing • Software Development • Digital Forensics • Secure Systems Engineering</p>
 
-<a class="btn" href="https://wa.me/254798802545?text=Hi%20I%20viewed%20your%20cybersecurity%20portfolio%20and%20would%20like%20to%20connect">WhatsApp Me</a>
+<a class="btn" href="https://wa.me/254798802545">WhatsApp Me</a>
 <a class="btn" href="CV.pdf" download>Download CV</a>
 </div>
 
-<!-- EVERYTHING BELOW IS YOUR ORIGINAL CONTENT (UNCHANGED) -->
+<!-- YOUR CONTENT (UNCHANGED BELOW THIS POINT) -->
+
 <section id="summary">
 <div class="chapter"><h2>Professional Summary</h2></div>
-<p>Cybersecurity, Digital Forensics, and Software Development professional...</p>
+<p>
+Cybersecurity, Digital Forensics, and Software Development professional specializing in penetration testing, secure system development, and forensic investigation of digital evidence...
+</p>
 </section>
 
-<section id="skills">...</section>
-<section id="exp">...</section>
-<section id="projects">...</section>
-<section id="forensics">...</section>
-<section id="certs">...</section>
-<section id="edu">...</section>
+<section id="skills"></section>
+<section id="exp"></section>
+<section id="projects"></section>
+<section id="forensics"></section>
+<section id="certs"></section>
+<section id="edu"></section>
 
 <section id="contact">
 <div class="chapter"><h2>Contact</h2></div>
@@ -385,39 +383,66 @@ Send via WhatsApp
 <a class="whatsapp-btn" href="https://wa.me/254798802545">💬 WhatsApp</a>
 
 <footer>
-<p>© 2026 All Rights Reserved | Cybersecurity & Digital Forensics Portfolio</p>
+<p>© 2026 Cybersecurity & Digital Forensics Portfolio</p>
 </footer>
 
 <script>
 
-/* =========================
-   (3) SCROLL REVEAL - NEW
-========================= */
-const sections = document.querySelectorAll("section");
+/* MATRIX */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
 
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*";
+const font=14;
+const cols=canvas.width/font;
+const drops=Array(Math.floor(cols)).fill(1);
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#38bdf8";
+ctx.font=font+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+const text=letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text,i*font,drops[i]*font);
+
+if(drops[i]*font>canvas.height && Math.random()>0.975){
+drops[i]=0;
+}
+drops[i]++;
+}
+
+requestAnimationFrame(draw);
+}
+draw();
+
+/* SCROLL REVEAL (TECH ANIMATION 1) */
+const sections=document.querySelectorAll("section");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add("visible");
 }
 });
 },{threshold:0.15});
 
 sections.forEach(s=>observer.observe(s));
 
-/* =========================
-   (4) FLOATING PARTICLES - NEW
-========================= */
-for(let i=0;i<30;i++){
+/* FLOATING PARTICLES (TECH ANIMATION 2) */
+for(let i=0;i<25;i++){
 let p=document.createElement("div");
 p.className="particle";
 p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=(5+Math.random()*10)+"s";
-p.style.opacity=Math.random()*0.3;
+p.style.animationDuration=(5+Math.random()*8)+"s";
 document.body.appendChild(p);
 }
 
-/* MENU */
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("show");
 }
