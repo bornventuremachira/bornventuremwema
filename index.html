@@ -23,7 +23,7 @@ color:#e2e8f0;
 overflow-x:hidden;
 }
 
-/* ================= CYBER NODES ================= */
+/* ================= NODES ================= */
 #nodes{
 position:fixed;
 top:0;
@@ -33,7 +33,7 @@ height:100%;
 z-index:-3;
 }
 
-/* ================= NAVBAR (FIXED MOBILE) ================= */
+/* ================= NAVBAR ================= */
 nav{
 position:fixed;
 top:0;
@@ -67,7 +67,6 @@ text-decoration:none;
 font-size:13px;
 padding:6px 10px;
 border-radius:6px;
-transition:0.3s;
 }
 
 .nav-links a:hover{
@@ -75,16 +74,35 @@ color:#38bdf8;
 background:rgba(56,189,248,0.08);
 }
 
-.nav-links a.active{
-color:#22c55e;
-border-bottom:2px solid #22c55e;
-}
-
 .menu-toggle{
 display:none;
 font-size:28px;
 color:#38bdf8;
 cursor:pointer;
+}
+
+/* ================= MOBILE NAV ================= */
+@media(max-width:768px){
+.menu-toggle{display:block;}
+
+.nav-links{
+position:fixed;
+top:65px;
+left:0;
+width:100%;
+background:rgba(5,8,20,0.98);
+backdrop-filter:blur(20px);
+flex-direction:column;
+display:none;
+padding:10px 0;
+}
+
+.nav-links.show{display:flex;}
+
+.nav-links a{
+padding:14px 20px;
+display:block;
+}
 }
 
 /* ================= HERO ================= */
@@ -182,15 +200,13 @@ background:#22c55e;
 animation:blink 0.8s infinite;
 }
 
-@keyframes blink{
-50%{opacity:0;}
-}
+@keyframes blink{50%{opacity:0;}}
 
 /* ================= GLITCH DIVIDER ================= */
 .section-divider{
 height:35px;
-position:relative;
 margin:10px 0;
+position:relative;
 }
 
 .section-divider::before,
@@ -244,12 +260,6 @@ background:rgba(15,23,42,0.75);
 padding:18px;
 border-radius:12px;
 border:1px solid rgba(56,189,248,0.2);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-border-color:#38bdf8;
 }
 
 /* ================= CONTACT ================= */
@@ -289,34 +299,9 @@ font-size:26px;
 color:white;
 }
 
-/* ================= MOBILE NAV FIX ================= */
-@media(max-width:768px){
-
-.menu-toggle{
-display:block;
-}
-
-.nav-links{
-position:fixed;
-top:65px;
-left:0;
-width:100%;
-background:rgba(5,8,20,0.98);
-backdrop-filter:blur(20px);
-flex-direction:column;
-display:none;
-padding:10px 0;
-z-index:9998;
-}
-
+/* ================= ACTIVE MOBILE SAFETY ================= */
 .nav-links.show{
 display:flex;
-}
-
-.nav-links a{
-padding:14px 20px;
-display:block;
-}
 }
 
 </style>
@@ -326,12 +311,10 @@ display:block;
 
 <canvas id="nodes"></canvas>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
 <h2>Cyber Portfolio</h2>
-
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
 <div class="nav-links" id="navLinks">
 <a href="#summary">Summary</a>
 <a href="#skills">Skills</a>
@@ -354,7 +337,7 @@ display:block;
 
 <div class="hero-text">
 <h1>Bornventure Machira Mwema</h1>
-<p>Penetration Testing • Software Development • Digital Forensics • Secure Systems Engineering</p>
+<p>Cybersecurity • Digital Forensics • Software Development • Penetration Testing</p>
 
 <a class="btn" href="https://wa.me/254798802545">
 <i class="fab fa-whatsapp"></i> WhatsApp Me
@@ -368,14 +351,11 @@ display:block;
 </div>
 </div>
 
-<!-- WHOAMI TERMINAL -->
+<!-- TERMINALS -->
 <div class="terminal" id="terminal"></div>
-
-<!-- LIVE TERMINAL -->
 <div class="live-terminal" id="liveTerminal"></div>
 
-<!-- ================= FULL CONTENT (UNCHANGED RESTORED STRUCTURE) ================= -->
-
+<!-- SUMMARY -->
 <section id="summary">
 <div class="chapter"><h2>Professional Summary</h2></div>
 <p>
@@ -403,7 +383,7 @@ Strong focus on building secure systems, analyzing cyber threats, and applying f
 <div class="chapter"><h2>Experience</h2></div>
 <div class="grid">
 <div class="card">Kenyatta University Attachment</div>
-<div class="card">Wattline Technologies IT Support</div>
+<div class="card">Wattline Technologies</div>
 <div class="card">Cybersecurity Labs</div>
 <div class="card">Laravel Projects</div>
 </div>
@@ -457,12 +437,10 @@ BSc Information Security & Forensics — KCA University
 
 <section id="contact">
 <div class="chapter"><h2>Contact</h2></div>
-
 <div class="contact-box">
 <input type="text">
 <input type="email">
 <textarea></textarea>
-
 <button class="btn" onclick="window.open('https://wa.me/254798802545')">
 Send via WhatsApp
 </button>
@@ -497,18 +475,14 @@ vy:(Math.random()-0.5)
 
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-
 particles.forEach(p=>{
 p.x+=p.vx;
 p.y+=p.vy;
-
 if(p.x<0||p.x>canvas.width) p.vx*=-1;
 if(p.y<0||p.y>canvas.height) p.vy*=-1;
-
 ctx.fillStyle="#38bdf8";
 ctx.fillRect(p.x,p.y,2,2);
 });
-
 requestAnimationFrame(animate);
 }
 animate();
@@ -517,7 +491,7 @@ animate();
 const text=`> whoami
 Name: Bornventure Machira Mwema
 Role: Cybersecurity Specialist
-Skills: Pentesting | Dev | Forensics
+Skills: Pen Testing | Forensics | Dev
 `;
 
 let i=0;
@@ -532,10 +506,10 @@ type();
 
 /* LIVE TERMINAL */
 const logs=[
-"[INFO] System initialized",
+"[INFO] System online",
 "[OK] Monitoring active",
 "[SCAN] Network scan running",
-"[ALERT] Suspicious activity detected"
+"[ALERT] Suspicious traffic detected"
 ];
 
 let l=0;
