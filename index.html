@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bornventure Machira Portfolio</title>
+<title>Cybersecurity & Digital Forensics Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
@@ -12,7 +12,11 @@
 /* =========================
    GLOBAL
 ========================= */
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 body{
 font-family:Inter;
@@ -23,7 +27,7 @@ overflow-x:hidden;
 }
 
 /* =========================
-   BACKGROUND
+   CYBER GRID BACKGROUND
 ========================= */
 body::before{
 content:"";
@@ -59,7 +63,10 @@ color:#38bdf8;
 font-size:16px;
 }
 
-.nav-links{display:flex;gap:14px;}
+.nav-links{
+display:flex;
+gap:12px;
+}
 
 .nav-links a{
 color:#cbd5e1;
@@ -67,11 +74,12 @@ text-decoration:none;
 font-size:13px;
 padding:6px 10px;
 border-radius:6px;
+transition:0.3s;
 }
 
 .nav-links a:hover{
-background:rgba(56,189,248,0.1);
 color:#38bdf8;
+background:rgba(56,189,248,0.1);
 }
 
 .menu-toggle{
@@ -83,18 +91,23 @@ cursor:pointer;
 
 @media(max-width:768px){
 .menu-toggle{display:block;}
+
 .nav-links{
 position:absolute;
 top:60px;
 left:0;
 right:0;
 flex-direction:column;
-display:none;
 background:rgba(5,8,20,0.95);
+display:none;
 padding:10px 0;
 }
+
 .nav-links.show{display:flex;}
-.nav-links a{padding:14px 20px;}
+
+.nav-links a{
+padding:14px 20px;
+}
 }
 
 /* =========================
@@ -111,7 +124,11 @@ font-family:Orbitron;
 color:#38bdf8;
 }
 
-.hero p{color:#94a3b8;}
+.hero p{
+max-width:800px;
+margin:10px auto;
+color:#94a3b8;
+}
 
 .btn{
 display:inline-block;
@@ -158,6 +175,7 @@ background:rgba(15,23,42,0.75);
 padding:18px;
 border-radius:12px;
 border:1px solid rgba(56,189,248,0.2);
+transition:0.3s;
 }
 
 .card:hover{
@@ -176,7 +194,7 @@ border-radius:20px;
 }
 
 /* =========================
-   CONTACT UX
+   CONTACT
 ========================= */
 .contact-box{
 background:rgba(15,23,42,0.6);
@@ -213,6 +231,17 @@ text-decoration:none;
 font-weight:600;
 }
 
+/* =========================
+   FOOTER
+========================= */
+footer{
+text-align:center;
+padding:25px;
+border-top:1px solid #1e3a8a;
+color:#64748b;
+font-size:13px;
+}
+
 </style>
 </head>
 
@@ -220,7 +249,7 @@ font-weight:600;
 
 <!-- NAV -->
 <nav>
-<h2>Bornventure Machira Portfolio</h2>
+<h2>Cyber Portfolio</h2>
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
 <div class="nav-links" id="navLinks">
@@ -228,6 +257,7 @@ font-weight:600;
 <a href="#skills">Skills</a>
 <a href="#exp">Experience</a>
 <a href="#projects">Projects</a>
+<a href="#forensics">Forensics</a>
 <a href="#certs">Certs</a>
 <a href="#edu">Education</a>
 <a href="#contact">Contact</a>
@@ -236,8 +266,8 @@ font-weight:600;
 
 <!-- HERO -->
 <div class="hero">
-<h1>Cybersecurity & Software Developer</h1>
-<p>Penetration Testing • Full Stack Development • Network Security</p>
+<h1>Cybersecurity & Digital Forensics Professional</h1>
+<p>Penetration Testing • Software Development • Digital Forensics • Secure Systems Engineering</p>
 
 <a class="btn"
 href="https://wa.me/254798802545?text=Hi%20I%20viewed%20your%20cybersecurity%20portfolio%20and%20would%20like%20to%20connect"
@@ -252,7 +282,9 @@ WhatsApp Me
 <section id="summary">
 <div class="chapter"><h2>Professional Summary</h2></div>
 <p>
-Cybersecurity and Software Development professional with experience in penetration testing, full-stack Laravel development, and secure system design.
+Cybersecurity, Digital Forensics, and Software Development professional specializing in penetration testing, secure system development, and forensic investigation of digital evidence. Experienced in Laravel full-stack development (frontend and backend), vulnerability assessment, network security monitoring, and incident response.
+
+Strong focus on building secure systems, analyzing cyber threats, and applying forensic methodologies to identify, preserve, and report digital evidence in investigative environments.
 </p>
 </section>
 
@@ -264,13 +296,18 @@ Cybersecurity and Software Development professional with experience in penetrati
 
 <div class="card">
 <h3>Cybersecurity</h3>
-<p>Penetration Testing, Vulnerability Assessment</p>
+<p>Penetration Testing, Vulnerability Assessment, Ethical Hacking</p>
 </div>
 
 <div class="card">
 <h3>Software Development</h3>
-<p>Laravel (Frontend & Backend), PHP, MySQL, API Development</p>
+<p>Laravel (Frontend & Backend), PHP, MySQL, API Integration</p>
 <span class="tag">Full Stack</span>
+</div>
+
+<div class="card">
+<h3>Digital Forensics</h3>
+<p>Memory Analysis, Disk Imaging, Network Forensics, Evidence Handling</p>
 </div>
 
 <div class="card">
@@ -289,25 +326,22 @@ Cybersecurity and Software Development professional with experience in penetrati
 
 <div class="card">
 <h3>Kenyatta University Attachment</h3>
-<p>Web development, WordPress support, UI design improvements</p>
-<span class="tag">Web Systems</span>
+<p>Web development, WordPress support, UI/UX improvements</p>
 </div>
 
 <div class="card">
 <h3>IT Support – Wattline Technologies</h3>
-<p>Networking, CCTV installation, system maintenance</p>
+<p>Networking, CCTV installation, IT infrastructure support</p>
 </div>
 
 <div class="card">
-<h3>Personal Projects (Cybersecurity)</h3>
-<p>Rooted Kioptrix, Brainpan, GoldenEye using exploitation techniques</p>
-<span class="tag">Ethical Hacking</span>
+<h3>Personal Cybersecurity Projects</h3>
+<p>Hands-on exploitation of Kioptrix, Brainpan, GoldenEye systems</p>
 </div>
 
 <div class="card">
 <h3>Software Development Projects</h3>
-<p>Built Laravel-based systems (frontend + backend) with authentication, CRUD, and database integration</p>
-<span class="tag">Laravel Full Stack</span>
+<p>Built Laravel-based systems with authentication, CRUD, and database integration (frontend + backend)</p>
 </div>
 
 </div>
@@ -331,13 +365,42 @@ Cybersecurity and Software Development professional with experience in penetrati
 
 <div class="card">
 <h3>GoldenEye</h3>
-<p>Web vulnerability exploitation and password attacks</p>
+<p>Web vulnerability exploitation and authentication attacks</p>
 </div>
 
 </div>
 </section>
 
-<!-- CERTS -->
+<!-- DIGITAL FORENSICS -->
+<section id="forensics">
+<div class="chapter"><h2>Digital Forensics Projects</h2></div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Network Traffic Investigation</h3>
+<p>Packet analysis to detect anomalies and reconstruct communication patterns.</p>
+</div>
+
+<div class="card">
+<h3>Memory Forensics (RAM Analysis)</h3>
+<p>Analysis of volatile memory to identify malicious processes and hidden artifacts.</p>
+</div>
+
+<div class="card">
+<h3>Deleted File Recovery</h3>
+<p>Recovered and analyzed deleted files using forensic recovery techniques.</p>
+</div>
+
+<div class="card">
+<h3>Disk Imaging & Evidence Preservation</h3>
+<p>Created forensic disk images while maintaining chain of custody.</p>
+</div>
+
+</div>
+</section>
+
+<!-- CERTIFICATIONS -->
 <section id="certs">
 <div class="chapter"><h2>Certifications</h2></div>
 
@@ -394,12 +457,17 @@ Send via WhatsApp
 </div>
 </section>
 
-<!-- WHATSAPP FLOAT -->
+<!-- WHATSAPP -->
 <a class="whatsapp-btn"
 href="https://wa.me/254798802545?text=Hi%20I%20viewed%20your%20portfolio"
 target="_blank">
 💬 WhatsApp
 </a>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 All Rights Reserved | Cybersecurity & Digital Forensics Portfolio</p>
+</footer>
 
 <script>
 function toggleMenu(){
