@@ -10,7 +10,7 @@
 <style>
 
 /* =========================
-   GLOBAL RESET
+   GLOBAL
 ========================= */
 *{
 margin:0;
@@ -110,7 +110,6 @@ cursor:pointer;
 
 /* MOBILE NAV */
 @media(max-width:768px){
-
 .menu-toggle{display:block;}
 
 .nav-links{
@@ -211,9 +210,7 @@ transform:translateY(-6px);
 border-color:#38bdf8;
 }
 
-.card h3{
-font-size:16px;
-}
+.card h3{font-size:16px;}
 
 .card p{
 font-size:13px;
@@ -221,7 +218,6 @@ color:#94a3b8;
 margin-top:5px;
 }
 
-/* TAG */
 .tag{
 display:inline-block;
 margin-top:8px;
@@ -233,25 +229,27 @@ border-radius:20px;
 }
 
 /* =========================
-   FORM
+   WHATSAPP FLOAT BUTTON
 ========================= */
-form{
-display:flex;
-flex-direction:column;
-max-width:500px;
-}
-
-input,textarea{
-margin:6px 0;
-padding:10px;
-border:none;
-border-radius:8px;
-background:#0f172a;
+.whatsapp-btn{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#25D366;
 color:white;
-outline:none;
+padding:12px 16px;
+border-radius:50px;
+font-weight:600;
+text-decoration:none;
+z-index:1000;
+box-shadow:0 0 18px rgba(37,211,102,0.35);
+transition:0.3s;
+font-size:13px;
 }
 
-textarea{min-height:120px;}
+.whatsapp-btn:hover{
+transform:scale(1.07);
+}
 
 /* =========================
    FOOTER
@@ -289,12 +287,18 @@ font-size:13px;
 <!-- HERO -->
 <div class="hero">
 <h1>Cybersecurity & Forensics Professional</h1>
+
 <p>
 Penetration Testing • Network Security • System Administration • Secure Development
 </p>
 
+<a class="btn"
+href="https://wa.me/254XXXXXXXXX?text=Hi%20I%20am%20interested%20in%20your%20cybersecurity%20services%20after%20viewing%20your%20portfolio"
+target="_blank">
+WhatsApp Me
+</a>
+
 <a class="btn" href="CV.pdf" download>Download CV</a>
-<a class="btn" href="#contact">Hire Me</a>
 </div>
 
 <!-- SUMMARY -->
@@ -305,7 +309,7 @@ Penetration Testing • Network Security • System Administration • Secure De
 </div>
 
 <p>
-Cybersecurity and Information Security professional with hands-on experience in ethical hacking, system administration, web development support, and network infrastructure security. Focused on penetration testing, vulnerability assessment, and secure system design.
+Cybersecurity and Information Security professional with hands-on experience in ethical hacking, system administration, web development support, and network infrastructure security.
 </p>
 </section>
 
@@ -326,7 +330,7 @@ Cybersecurity and Information Security professional with hands-on experience in 
 
 <div class="card">
 <h3>Systems Administration</h3>
-<p>Linux Server, Windows Server, System Hardening</p>
+<p>Linux, Windows Server, System Hardening</p>
 </div>
 
 <div class="card">
@@ -336,12 +340,7 @@ Cybersecurity and Information Security professional with hands-on experience in 
 
 <div class="card">
 <h3>Development</h3>
-<p>PHP, Laravel, MySQL, WordPress, API Integration</p>
-</div>
-
-<div class="card">
-<h3>Data Systems</h3>
-<p>Database Management, Reporting, Data Analysis</p>
+<p>PHP, Laravel, MySQL, API Integration</p>
 </div>
 
 </div>
@@ -351,27 +350,27 @@ Cybersecurity and Information Security professional with hands-on experience in 
 <section id="exp">
 <div class="chapter">
 <h2>Experience</h2>
-<p>Professional & Field Experience</p>
+<p>Field Exposure</p>
 </div>
 
 <div class="grid">
 
 <div class="card">
-<h3>ICT Attachment – Web Development</h3>
-<p>Kenyatta University | 2025</p>
-<p>Website development support, WordPress management, UI updates, troubleshooting.</p>
+<h3>ICT Attachment – Kenyatta University</h3>
+<p>2025</p>
+<p>Web development support, WordPress management, UI improvements.</p>
 </div>
 
 <div class="card">
 <h3>Cybersecurity Trainee</h3>
 <p>2022 – Present</p>
-<p>Penetration testing on vulnerable lab systems (Kioptrix, Brainpan, GoldenEye).</p>
+<p>Penetration testing on lab environments (Kioptrix, Brainpan).</p>
 </div>
 
 <div class="card">
 <h3>IT Support Assistant</h3>
-<p>Wattline Technologies Ltd | 2023 – 2024</p>
-<p>Network setup, CCTV installation, IT infrastructure support.</p>
+<p>Wattline Technologies | 2023 – 2024</p>
+<p>Network setup, CCTV installation, IT support.</p>
 </div>
 
 </div>
@@ -381,15 +380,15 @@ Cybersecurity and Information Security professional with hands-on experience in 
 <section id="certs">
 <div class="chapter">
 <h2>Certifications</h2>
-<p>Verified Training Credentials</p>
+<p>Verified Training</p>
 </div>
 
 <div class="grid">
 
 <div class="card">
-<h3>Blockchain Security Examiner (CBSE)</h3>
+<h3>Blockchain Security Examiner</h3>
 <p>Alison</p>
-<span class="tag">Level 1</span>
+<span class="tag">CBSE</span>
 </div>
 
 <div class="card">
@@ -400,12 +399,6 @@ Cybersecurity and Information Security professional with hands-on experience in 
 <div class="card">
 <h3>CCTV Systems & AutoCAD</h3>
 <p>Alison</p>
-</div>
-
-<div class="card">
-<h3>Social Media Cybersecurity</h3>
-<p>Alison</p>
-<span class="tag">Level 1</span>
 </div>
 
 </div>
@@ -419,10 +412,9 @@ Cybersecurity and Information Security professional with hands-on experience in 
 </div>
 
 <div class="card">
-<h3>BSc. Information Security and Forensics</h3>
+<h3>BSc. Information Security & Forensics</h3>
 <p>KCA University | 2020 – 2025</p>
 <span class="tag">Second Class Honors (Upper Division)</span>
-<p>Specialization: Cybersecurity, Digital Forensics, Network Security</p>
 </div>
 
 </section>
@@ -431,19 +423,19 @@ Cybersecurity and Information Security professional with hands-on experience in 
 <section id="projects">
 <div class="chapter">
 <h2>Projects</h2>
-<p>Practical Implementations</p>
+<p>Practical Systems</p>
 </div>
 
 <div class="grid">
 
 <div class="card">
-<h3>Venture Hotel Management System</h3>
-<p>Secure Laravel + MySQL system with authentication and role-based access.</p>
+<h3>Venture Hotel System</h3>
+<p>Secure Laravel + MySQL system with authentication.</p>
 </div>
 
 <div class="card">
 <h3>WordPress Security Hardening</h3>
-<p>Security audits, optimization, and vulnerability remediation.</p>
+<p>Security audits and vulnerability fixes.</p>
 </div>
 
 </div>
@@ -453,20 +445,27 @@ Cybersecurity and Information Security professional with hands-on experience in 
 <section id="contact">
 <div class="chapter">
 <h2>Contact</h2>
-<p>Let’s work together</p>
+<p>Let’s connect</p>
 </div>
 
 <form>
-<input type="text" placeholder="Full Name">
+<input type="text" placeholder="Name">
 <input type="email" placeholder="Email">
 <textarea placeholder="Message"></textarea>
-<button class="btn" type="submit">Send Message</button>
+<button class="btn" type="submit">Send</button>
 </form>
 </section>
 
 <footer>
-© 2026 Cybersecurity Portfolio | Interview Magnet Final Version
+© 2026 Cybersecurity Portfolio
 </footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp-btn"
+href="https://wa.me/254XXXXXXXXX?text=Hi%20I%20viewed%20your%20cybersecurity%20portfolio%20and%20I%20would%20like%20to%20connect"
+target="_blank">
+💬 WhatsApp Me
+</a>
 
 <script>
 
@@ -475,9 +474,9 @@ function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("show");
 }
 
-/* CLOSE MENU ON CLICK */
+/* CLOSE ON CLICK */
 document.querySelectorAll(".nav-item").forEach(item=>{
-item.addEventListener("click", ()=>{
+item.addEventListener("click",()=>{
 document.getElementById("navLinks").classList.remove("show");
 });
 });
@@ -487,7 +486,6 @@ const sections=document.querySelectorAll("section");
 const navItems=document.querySelectorAll(".nav-item");
 
 window.addEventListener("scroll",()=>{
-
 let current="";
 
 sections.forEach(sec=>{
@@ -502,7 +500,6 @@ if(link.getAttribute("href")==="#"+current){
 link.classList.add("active");
 }
 });
-
 });
 
 </script>
