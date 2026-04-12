@@ -9,9 +9,9 @@
 
 <style>
 
-/* ======================
-   GLOBAL FIX (NO OVERLAP)
-====================== */
+/* =========================
+   GLOBAL RESET
+========================= */
 *{
 margin:0;
 padding:0;
@@ -22,22 +22,47 @@ body{
 font-family:Inter;
 background:#050814;
 color:#e2e8f0;
-line-height:1.6;
 overflow-x:hidden;
 }
 
-/* IMPORTANT: spacing system */
-section{
-padding:90px 20px;
-max-width:1100px;
-margin:auto;
-position:relative;
-z-index:1;
+/* =========================
+   CYBER BACKGROUND GRID
+========================= */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
+background-size:50px 50px;
+z-index:-2;
 }
 
-/* ======================
-   NAV (SAFE FIXED)
-====================== */
+body::after{
+content:"";
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle, rgba(56,189,248,0.15), transparent 70%);
+top:20%;
+left:10%;
+filter:blur(40px);
+z-index:-1;
+animation:floatGlow 6s infinite alternate;
+}
+
+@keyframes floatGlow{
+from{transform:translateY(0px);}
+to{transform:translateY(40px);}
+}
+
+/* =========================
+   NAVIGATION (MOBILE FIXED)
+========================= */
 nav{
 position:fixed;
 top:0;
@@ -46,143 +71,164 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:14px 40px;
-background:rgba(5,8,20,0.85);
-backdrop-filter:blur(12px);
+padding:12px 18px;
+background:rgba(5,8,20,0.9);
+backdrop-filter:blur(10px);
 border-bottom:1px solid #1e3a8a;
 z-index:1000;
+flex-wrap:wrap;
 }
 
 nav h2{
 font-family:Orbitron;
 color:#38bdf8;
-font-size:18px;
+font-size:16px;
 }
 
 nav a{
 color:#cbd5e1;
-margin-left:18px;
+margin-left:10px;
 text-decoration:none;
-font-size:14px;
+font-size:12px;
 }
 
-nav a:hover{color:#38bdf8;}
-
-/* ======================
-   HERO (NO OVERLAY BUG)
-====================== */
+/* =========================
+   HERO
+========================= */
 .hero{
-padding-top:140px;
-padding-bottom:80px;
+padding:130px 18px 60px;
 text-align:center;
-position:relative;
-z-index:1;
 }
 
 .hero h1{
-font-size:3rem;
+font-size:2.2rem;
 font-family:Orbitron;
 color:#38bdf8;
 }
 
 .hero p{
-max-width:700px;
-margin:auto;
-color:#94a3b8;
 margin-top:10px;
+color:#94a3b8;
+max-width:100%;
 }
 
 .btn{
 display:inline-block;
-margin-top:18px;
-padding:10px 18px;
+margin-top:15px;
+padding:10px 16px;
 background:#0ea5e9;
 color:black;
 border-radius:8px;
 text-decoration:none;
 font-weight:600;
+font-size:14px;
 }
 
-.btn:hover{
-transform:scale(1.05);
+/* =========================
+   SECTION LAYOUT FIX
+========================= */
+section{
+padding:60px 18px;
+max-width:1100px;
+margin:auto;
+position:relative;
 }
 
-/* ======================
-   SECTION TITLES
-====================== */
-h2{
+/* CHAPTER HEADER STYLE */
+.chapter{
+margin-bottom:25px;
+padding-bottom:10px;
+border-bottom:1px solid rgba(56,189,248,0.3);
+}
+
+.chapter h2{
 font-family:Orbitron;
 color:#38bdf8;
-margin-bottom:25px;
-border-left:4px solid #38bdf8;
-padding-left:10px;
+font-size:18px;
 }
 
-/* ======================
-   GRID SYSTEM
-====================== */
+.chapter p{
+color:#94a3b8;
+font-size:13px;
+margin-top:5px;
+}
+
+/* =========================
+   GRID FIX (MOBILE SAFE)
+========================= */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:16px;
 }
 
-/* ======================
-   CARDS (SAFE LAYERING)
-====================== */
+/* CARD */
 .card{
 background:rgba(15,23,42,0.75);
-padding:20px;
+padding:18px;
 border-radius:12px;
 border:1px solid rgba(56,189,248,0.2);
 transition:0.3s;
-position:relative;
-z-index:1;
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-5px);
 border-color:#38bdf8;
 }
 
-/* TAGS */
+.card h3{
+font-size:16px;
+}
+
+.card p{
+font-size:13px;
+color:#94a3b8;
+margin-top:5px;
+}
+
+/* TAG */
 .tag{
 display:inline-block;
 margin-top:8px;
-padding:4px 10px;
-font-size:12px;
+padding:3px 8px;
+font-size:11px;
 background:#0ea5e9;
 color:black;
 border-radius:20px;
 }
 
-/* ======================
-   CONTACT FORM
-====================== */
+/* =========================
+   FORM MOBILE FIX
+========================= */
 form{
 display:flex;
 flex-direction:column;
-max-width:500px;
 }
 
 input,textarea{
-margin:8px 0;
+margin:6px 0;
 padding:10px;
-border:none;
 border-radius:8px;
+border:none;
 background:#0f172a;
 color:white;
 outline:none;
+font-size:14px;
 }
 
-/* ======================
+textarea{
+min-height:110px;
+}
+
+/* =========================
    FOOTER
-====================== */
+========================= */
 footer{
 text-align:center;
-padding:30px;
+padding:25px;
 border-top:1px solid #1e3a8a;
 color:#64748b;
+font-size:13px;
 }
 
 </style>
@@ -196,48 +242,50 @@ color:#64748b;
 <div>
 <a href="#summary">Summary</a>
 <a href="#skills">Skills</a>
-<a href="#exp">Experience</a>
-<a href="#certs">Certifications</a>
-<a href="#edu">Education</a>
+<a href="#exp">Exp</a>
+<a href="#certs">Certs</a>
+<a href="#edu">Edu</a>
 <a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
 </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
 <h1>Cybersecurity & Forensics Professional</h1>
-<p>
-Penetration testing • Network security • IT support • Secure system development
-</p>
-
+<p>Penetration Testing • Network Security • IT Support • Secure Systems Development</p>
 <a class="btn" href="CV.pdf" download>Download CV</a>
-<a class="btn" href="#contact">Hire Me</a>
 </div>
 
 <!-- SUMMARY -->
 <section id="summary">
+<div class="chapter">
 <h2>Professional Summary</h2>
+<p>Career Overview</p>
+</div>
+
 <p>
-Cybersecurity and Information Security professional with hands-on experience in ethical hacking, system support, web development, and network security. Strong focus on penetration testing, secure system design, and IT infrastructure support.
+Cybersecurity and Information Security professional with hands-on experience in ethical hacking, system administration, web development support, and network security. Focused on penetration testing, secure system design, and IT infrastructure hardening.
 </p>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
+<div class="chapter">
 <h2>Core Skills</h2>
+<p>Technical Capabilities</p>
+</div>
 
 <div class="grid">
 
 <div class="card">
 <h3>Cybersecurity</h3>
-<p>Penetration Testing, Vulnerability Assessment, Ethical Hacking</p>
+<p>Penetration Testing, Ethical Hacking, Vulnerability Assessment</p>
 <span class="tag">Offensive Security</span>
 </div>
 
 <div class="card">
 <h3>Networking</h3>
-<p>LAN/WAN, CCTV Systems, Cabling, Network Security</p>
+<p>LAN/WAN, CCTV Systems, Structured Cabling</p>
 </div>
 
 <div class="card">
@@ -247,7 +295,7 @@ Cybersecurity and Information Security professional with hands-on experience in 
 
 <div class="card">
 <h3>Forensics</h3>
-<p>System analysis, security auditing, incident response basics</p>
+<p>System analysis, incident response, security auditing</p>
 </div>
 
 </div>
@@ -255,32 +303,29 @@ Cybersecurity and Information Security professional with hands-on experience in 
 
 <!-- EXPERIENCE -->
 <section id="exp">
+<div class="chapter">
 <h2>Experience</h2>
+<p>Work & Field Exposure</p>
+</div>
 
 <div class="grid">
 
 <div class="card">
 <h3>ICT Attachment – Web Development</h3>
 <p>Kenyatta University | 2025</p>
-<p>Website development, WordPress support, UI updates, troubleshooting.</p>
+<p>Website support, WordPress management, UI updates, troubleshooting.</p>
 </div>
 
 <div class="card">
 <h3>Cybersecurity Trainee</h3>
 <p>2022 – Present</p>
-<p>Penetration testing on vulnerable machines and security labs.</p>
+<p>Penetration testing on lab environments (Kioptrix, Brainpan, GoldenEye).</p>
 </div>
 
 <div class="card">
 <h3>IT Support Assistant</h3>
 <p>Wattline Technologies Ltd | 2023 – 2024</p>
-<p>Network cabling, CCTV installation, IT support operations.</p>
-</div>
-
-<div class="card">
-<h3>Exam Invigilator</h3>
-<p>KASNEB | 2022</p>
-<p>Exam supervision and compliance management.</p>
+<p>Network installation, CCTV setup, and IT support operations.</p>
 </div>
 
 </div>
@@ -288,34 +333,33 @@ Cybersecurity and Information Security professional with hands-on experience in 
 
 <!-- CERTIFICATIONS -->
 <section id="certs">
+<div class="chapter">
 <h2>Certifications</h2>
+<p>Professional Training Credentials</p>
+</div>
 
 <div class="grid">
 
 <div class="card">
-<h3>Certified Blockchain Security Examiner (CBSE)</h3>
+<h3>CBSE – Blockchain Security</h3>
 <p>Alison</p>
 <span class="tag">Level 1</span>
-<p>ID: 4618-25043015</p>
 </div>
 
 <div class="card">
-<h3>Computer Networking – Digital Security</h3>
+<h3>Digital Network Security</h3>
 <p>Alison</p>
-<p>ID: 1447-25043015</p>
 </div>
 
 <div class="card">
-<h3>CCTV Systems & AutoCAD Layouts</h3>
+<h3>CCTV Systems & AutoCAD</h3>
 <p>Alison</p>
-<p>ID: 4185-25043015</p>
 </div>
 
 <div class="card">
-<h3>Social Media Cybersecurity & Analysis</h3>
+<h3>Social Media Cybersecurity</h3>
 <p>Alison</p>
 <span class="tag">Level 1</span>
-<p>ID: 4827-25043015</p>
 </div>
 
 </div>
@@ -323,50 +367,44 @@ Cybersecurity and Information Security professional with hands-on experience in 
 
 <!-- EDUCATION -->
 <section id="edu">
+<div class="chapter">
 <h2>Education</h2>
+<p>Academic Background</p>
+</div>
 
 <div class="card">
 <h3>BSc. Information Security and Forensics</h3>
 <p>KCA University | 2020 – 2025</p>
-<p>Specialization: Cybersecurity, Digital Forensics, Network Security, Systems Security</p>
+<p>Specialization: Cybersecurity, Digital Forensics, Network Security</p>
 </div>
 
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
+<div class="chapter">
 <h2>Projects</h2>
+<p>Practical Implementations</p>
+</div>
 
 <div class="grid">
 
 <div class="card">
 <h3>Venture Hotel System</h3>
-<p>Secure Laravel + MySQL system with authentication and roles.</p>
+<p>Secure Laravel + MySQL system with authentication & roles.</p>
 </div>
 
 <div class="card">
 <h3>WordPress Security Hardening</h3>
-<p>Security audit, optimization, and vulnerability fixes.</p>
+<p>Website auditing, optimization, and vulnerability fixes.</p>
 </div>
 
 </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-<h2>Contact</h2>
-
-<form>
-<input type="text" placeholder="Full Name">
-<input type="email" placeholder="Email">
-<textarea placeholder="Message"></textarea>
-<button class="btn" type="submit">Send Message</button>
-</form>
-
-</section>
-
+<!-- FOOTER -->
 <footer>
-© 2026 Cybersecurity Portfolio | Professional Job Ready Version
+© 2026 Cybersecurity Portfolio | Job Ready Version
 </footer>
 
 </body>
