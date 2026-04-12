@@ -3,30 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity Portfolio | Job Ready</title>
+<title>Cybersecurity Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+/* ======================
+   GLOBAL FIX (NO OVERLAP)
+====================== */
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:Inter;
 background:#050814;
 color:#e2e8f0;
 line-height:1.6;
+overflow-x:hidden;
 }
 
-/* NAV */
+/* IMPORTANT: spacing system */
+section{
+padding:90px 20px;
+max-width:1100px;
+margin:auto;
+position:relative;
+z-index:1;
+}
+
+/* ======================
+   NAV (SAFE FIXED)
+====================== */
 nav{
 position:fixed;
 top:0;
+left:0;
 width:100%;
 display:flex;
 justify-content:space-between;
+align-items:center;
 padding:14px 40px;
 background:rgba(5,8,20,0.85);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 border-bottom:1px solid #1e3a8a;
 z-index:1000;
 }
@@ -34,6 +56,7 @@ z-index:1000;
 nav h2{
 font-family:Orbitron;
 color:#38bdf8;
+font-size:18px;
 }
 
 nav a{
@@ -45,10 +68,15 @@ font-size:14px;
 
 nav a:hover{color:#38bdf8;}
 
-/* HERO */
+/* ======================
+   HERO (NO OVERLAY BUG)
+====================== */
 .hero{
-padding:140px 20px 60px;
+padding-top:140px;
+padding-bottom:80px;
 text-align:center;
+position:relative;
+z-index:1;
 }
 
 .hero h1{
@@ -61,12 +89,12 @@ color:#38bdf8;
 max-width:700px;
 margin:auto;
 color:#94a3b8;
+margin-top:10px;
 }
 
-/* BUTTONS */
 .btn{
 display:inline-block;
-margin-top:15px;
+margin-top:18px;
 padding:10px 18px;
 background:#0ea5e9;
 color:black;
@@ -75,37 +103,41 @@ text-decoration:none;
 font-weight:600;
 }
 
-.btn:hover{transform:scale(1.05);}
-
-/* SECTIONS */
-section{
-padding:70px 20px;
-max-width:1100px;
-margin:auto;
+.btn:hover{
+transform:scale(1.05);
 }
 
+/* ======================
+   SECTION TITLES
+====================== */
 h2{
 font-family:Orbitron;
 color:#38bdf8;
+margin-bottom:25px;
 border-left:4px solid #38bdf8;
 padding-left:10px;
-margin-bottom:20px;
 }
 
-/* GRID */
+/* ======================
+   GRID SYSTEM
+====================== */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
 }
 
-/* CARD */
+/* ======================
+   CARDS (SAFE LAYERING)
+====================== */
 .card{
 background:rgba(15,23,42,0.75);
 padding:20px;
 border-radius:12px;
 border:1px solid rgba(56,189,248,0.2);
 transition:0.3s;
+position:relative;
+z-index:1;
 }
 
 .card:hover{
@@ -113,7 +145,7 @@ transform:translateY(-6px);
 border-color:#38bdf8;
 }
 
-/* TAG */
+/* TAGS */
 .tag{
 display:inline-block;
 margin-top:8px;
@@ -124,7 +156,9 @@ color:black;
 border-radius:20px;
 }
 
-/* FORM */
+/* ======================
+   CONTACT FORM
+====================== */
 form{
 display:flex;
 flex-direction:column;
@@ -141,9 +175,9 @@ color:white;
 outline:none;
 }
 
-textarea{min-height:120px;}
-
-/* FOOTER */
+/* ======================
+   FOOTER
+====================== */
 footer{
 text-align:center;
 padding:30px;
@@ -163,6 +197,8 @@ color:#64748b;
 <a href="#summary">Summary</a>
 <a href="#skills">Skills</a>
 <a href="#exp">Experience</a>
+<a href="#certs">Certifications</a>
+<a href="#edu">Education</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </div>
@@ -170,9 +206,9 @@ color:#64748b;
 
 <!-- HERO -->
 <div class="hero">
-<h1>Cybersecurity & Information Security Professional</h1>
+<h1>Cybersecurity & Forensics Professional</h1>
 <p>
-Cybersecurity graduate specializing in penetration testing, system security, IT support, and secure web development.
+Penetration testing • Network security • IT support • Secure system development
 </p>
 
 <a class="btn" href="CV.pdf" download>Download CV</a>
@@ -183,7 +219,7 @@ Cybersecurity graduate specializing in penetration testing, system security, IT 
 <section id="summary">
 <h2>Professional Summary</h2>
 <p>
-Detail-oriented cybersecurity and information security professional with hands-on experience in ethical hacking, system administration, web development support, and IT infrastructure. Strong understanding of penetration testing methodologies, network security, and secure system design.
+Cybersecurity and Information Security professional with hands-on experience in ethical hacking, system support, web development, and network security. Strong focus on penetration testing, secure system design, and IT infrastructure support.
 </p>
 </section>
 
@@ -201,12 +237,12 @@ Detail-oriented cybersecurity and information security professional with hands-o
 
 <div class="card">
 <h3>Networking</h3>
-<p>LAN/WAN, CCTV Systems, Network Cabling, Security Protocols</p>
+<p>LAN/WAN, CCTV Systems, Cabling, Network Security</p>
 </div>
 
 <div class="card">
 <h3>Development</h3>
-<p>PHP, Laravel, MySQL, WordPress, Basic Web Security</p>
+<p>PHP, Laravel, MySQL, WordPress</p>
 </div>
 
 <div class="card">
@@ -224,42 +260,77 @@ Detail-oriented cybersecurity and information security professional with hands-o
 <div class="grid">
 
 <div class="card">
-<h3>ICT Attachment – Web Development & Design</h3>
+<h3>ICT Attachment – Web Development</h3>
 <p>Kenyatta University | 2025</p>
-<ul>
-<li>Supported website development and maintenance operations.</li>
-<li>Worked with WordPress-based institutional systems.</li>
-<li>Assisted in UI improvements, updates, and troubleshooting.</li>
-</ul>
+<p>Website development, WordPress support, UI updates, troubleshooting.</p>
 </div>
 
 <div class="card">
-<h3>Cybersecurity & Forensics Trainee</h3>
+<h3>Cybersecurity Trainee</h3>
 <p>2022 – Present</p>
-<ul>
-<li>Practiced penetration testing on vulnerable machines (Kioptrix, Brainpan, GoldenEye).</li>
-<li>Applied ethical hacking techniques and security testing.</li>
-</ul>
+<p>Penetration testing on vulnerable machines and security labs.</p>
 </div>
 
 <div class="card">
-<h3>IT & Data Support Assistant</h3>
+<h3>IT Support Assistant</h3>
 <p>Wattline Technologies Ltd | 2023 – 2024</p>
-<ul>
-<li>Supported IT operations and system deployment tasks.</li>
-<li>Assisted in CCTV installation and structured cabling.</li>
-</ul>
+<p>Network cabling, CCTV installation, IT support operations.</p>
 </div>
 
 <div class="card">
 <h3>Exam Invigilator</h3>
 <p>KASNEB | 2022</p>
-<ul>
-<li>Ensured compliance and integrity during examinations.</li>
-</ul>
+<p>Exam supervision and compliance management.</p>
 </div>
 
 </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+<h2>Certifications</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Certified Blockchain Security Examiner (CBSE)</h3>
+<p>Alison</p>
+<span class="tag">Level 1</span>
+<p>ID: 4618-25043015</p>
+</div>
+
+<div class="card">
+<h3>Computer Networking – Digital Security</h3>
+<p>Alison</p>
+<p>ID: 1447-25043015</p>
+</div>
+
+<div class="card">
+<h3>CCTV Systems & AutoCAD Layouts</h3>
+<p>Alison</p>
+<p>ID: 4185-25043015</p>
+</div>
+
+<div class="card">
+<h3>Social Media Cybersecurity & Analysis</h3>
+<p>Alison</p>
+<span class="tag">Level 1</span>
+<p>ID: 4827-25043015</p>
+</div>
+
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section id="edu">
+<h2>Education</h2>
+
+<div class="card">
+<h3>BSc. Information Security and Forensics</h3>
+<p>KCA University | 2020 – 2025</p>
+<p>Specialization: Cybersecurity, Digital Forensics, Network Security, Systems Security</p>
+</div>
+
 </section>
 
 <!-- PROJECTS -->
@@ -269,14 +340,13 @@ Detail-oriented cybersecurity and information security professional with hands-o
 <div class="grid">
 
 <div class="card">
-<h3>Venture Hotel Management System</h3>
-<p>Secure Laravel + MySQL system with authentication and role-based access.</p>
-<span class="tag">Full Stack</span>
+<h3>Venture Hotel System</h3>
+<p>Secure Laravel + MySQL system with authentication and roles.</p>
 </div>
 
 <div class="card">
 <h3>WordPress Security Hardening</h3>
-<p>Performed security audits, updates, and performance optimization.</p>
+<p>Security audit, optimization, and vulnerability fixes.</p>
 </div>
 
 </div>
@@ -288,19 +358,15 @@ Detail-oriented cybersecurity and information security professional with hands-o
 
 <form>
 <input type="text" placeholder="Full Name">
-<input type="email" placeholder="Email Address">
-<textarea placeholder="Your Message"></textarea>
+<input type="email" placeholder="Email">
+<textarea placeholder="Message"></textarea>
 <button class="btn" type="submit">Send Message</button>
 </form>
-
-<p style="margin-top:15px;color:#94a3b8;">
-Email: yourname@email.com | LinkedIn: your-profile
-</p>
 
 </section>
 
 <footer>
-© 2026 Cybersecurity Portfolio | Built for career opportunities
+© 2026 Cybersecurity Portfolio | Professional Job Ready Version
 </footer>
 
 </body>
