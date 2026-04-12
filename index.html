@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Bornventure's Portfolio</title>
+<title>Cybersecurity & Digital Forensics Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
@@ -87,37 +87,6 @@ display:none;
 font-size:22px;
 color:#38bdf8;
 cursor:pointer;
-}
-
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: center;
-}
-/* NETWORK CANVAS */
-#networkCanvas{
-position: center;
-inset:0;
-z-index:-1;
-}
-
-/* TERMINAL */
-.terminal{
-background:#020617;
-border:1px solid #38bdf8;
-position: Center;
-text-align : center;
-padding:15px;
-margin-top:20px;
-width:320px;
-font-family:monospace;
-color:#38bdf8;
-border-radius:10px;
-box-shadow:0 0 15px rgba(56,189,248,0.4);
 }
 
 @media(max-width:768px){
@@ -250,15 +219,16 @@ color:white;
 /* =========================
    WHATSAPP
 ========================= */
-/* WHATSAPP */
 .whatsapp-btn{
 position:fixed;
-bottom:20px;right:20px;
-width:55px;height:55px;
+bottom:80px;
+right:20px;
 background:#25D366;
-display:flex;align-items:center;justify-content:center;
-border-radius:50%;
-box-shadow:0 0 20px rgba(37,211,102,0.7);
+color:white;
+padding:12px 16px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
 }
 
 /* =========================
@@ -296,7 +266,6 @@ font-size:13px;
 
 <!-- HERO -->
 <div class="hero">
-   <canvas id="networkCanvas"></canvas>
 <h1>Cybersecurity & Digital Forensics Professional</h1>
 <p>Penetration Testing • Software Development • Digital Forensics • Secure Systems Engineering</p>
 
@@ -308,7 +277,6 @@ WhatsApp Me
 
 <a class="btn" href="CV.pdf" download>Download CV</a>
 </div>
-<div class="terminal" id="terminal"></div>
 
 <!-- SUMMARY -->
 <section id="summary">
@@ -505,91 +473,6 @@ target="_blank">
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("show");
 }
-
-   /* MOBILE MENU */
-function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("show");
-}
-
-/* TERMINAL EFFECT */
-const text = [
-"> whoami",
-"Bornventure - Cybersecurity Specialist",
-"> nmap target...",
-"Ports open: 22, 80, 443",
-"> access granted"
-];
-
-let i=0,j=0;
-function type(){
-if(i<text.length){
-if(j<text[i].length){
-document.getElementById("terminal").innerHTML += text[i][j];
-j++;
-setTimeout(type,30);
-}else{
-document.getElementById("terminal").innerHTML += "<br>";
-i++; j=0;
-setTimeout(type,400);
-}
-}
-}
-type();
-
-/* NETWORK ANIMATION */
-const canvas = document.getElementById("networkCanvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let nodes = [];
-
-for(let i=0;i<50;i++){
-nodes.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-0.5),
-vy:(Math.random()-0.5)
-});
-}
-
-function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-nodes.forEach(n=>{
-n.x+=n.vx;
-n.y+=n.vy;
-
-if(n.x<0||n.x>canvas.width)n.vx*=-1;
-if(n.y<0||n.y>canvas.height)n.vy*=-1;
-
-ctx.beginPath();
-ctx.arc(n.x,n.y,2,0,Math.PI*2);
-ctx.fillStyle="#38bdf8";
-ctx.fill();
-});
-
-for(let i=0;i<nodes.length;i++){
-for(let j=i+1;j<nodes.length;j++){
-let dx=nodes[i].x-nodes[j].x;
-let dy=nodes[i].y-nodes[j].y;
-let dist=Math.sqrt(dx*dx+dy*dy);
-
-if(dist<120){
-ctx.beginPath();
-ctx.moveTo(nodes[i].x,nodes[i].y);
-ctx.lineTo(nodes[j].x,nodes[j].y);
-ctx.strokeStyle="rgba(56,189,248,0.2)";
-ctx.stroke();
-}
-}
-}
-
-requestAnimationFrame(draw);
-}
-draw();
-
 </script>
 
 </body>
