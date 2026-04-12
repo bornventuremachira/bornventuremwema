@@ -9,7 +9,6 @@
 
 <style>
 * {margin:0; padding:0; box-sizing:border-box;}
-    
 
 body {
     font-family: 'Inter', sans-serif;
@@ -26,6 +25,7 @@ nav {
     width:100%;
     background:#020617;
     border-bottom:1px solid #0ea5e9;
+    z-index:1000;
 }
 
 nav h2 {color:#38bdf8;}
@@ -33,12 +33,29 @@ nav a {color:white; margin-left:20px; text-decoration:none;}
 
 /* HERO */
 .hero {
+    position:relative;
     height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
+    overflow:hidden;
+}
+
+/* CANVAS BACKGROUND */
+#network {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+}
+
+.hero-content {
+    position:relative;
+    z-index:1;
 }
 
 .hero h1 {font-size:3rem; color:#38bdf8;}
@@ -51,18 +68,11 @@ nav a {color:white; margin-left:20px; text-decoration:none;}
     color:black;
     border-radius:8px;
     text-decoration:none;
-    display:inline-block;
 }
 
 /* SECTIONS */
 section {padding:80px 40px;}
-
 h2 {color:#38bdf8; margin-bottom:20px;}
-
-/* SKILLS */
-.skill {margin-bottom:15px;}
-.bar {background:#1e293b; border-radius:10px;}
-.fill {height:10px; background:#0ea5e9;}
 
 /* PROJECTS */
 .projects {
@@ -83,25 +93,6 @@ h2 {color:#38bdf8; margin-bottom:20px;}
     box-shadow:0 0 15px #0ea5e9;
 }
 
-/* FORM */
-input, textarea {
-    width:100%;
-    padding:10px;
-    margin-bottom:10px;
-    border:none;
-    border-radius:5px;
-}
-
-/* TERMINAL */
-.terminal {
-    background:black;
-    color:#00ff9f;
-    padding:20px;
-    border-radius:10px;
-    font-family:monospace;
-}
-
-/* FOOTER */
 footer {
     text-align:center;
     padding:20px;
@@ -116,102 +107,39 @@ footer {
     <h2>BM</h2>
     <div>
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#reports">Security</a>
         <a href="#contact">Contact</a>
     </div>
 </nav>
 
 <section class="hero">
-    <h1>Bornventure Mwema</h1>
-    <p id="typing"></p>
-    <a href="Bornventure_Mwema_CV.pdf" download class="btn">Download CV</a>
+    <canvas id="network"></canvas>
+
+    <div class="hero-content">
+        <h1>Bornventure Mwema</h1>
+        <p id="typing"></p>
+        <a href="Bornventure_Mwema_CV.pdf" download class="btn">Download CV</a>
+    </div>
 </section>
 
 <section id="about">
     <h2>About Me</h2>
-    <p>
-        Cybersecurity and DevOps enthusiast passionate about penetration testing,
-        secure systems, and real-world problem solving.
-    </p>
-</section>
-
-<section id="skills">
-    <h2>Skills</h2>
-
-    <div class="skill">
-        <p>Penetration Testing</p>
-        <div class="bar"><div class="fill" style="width:85%"></div></div>
-    </div>
-
-    <div class="skill">
-        <p>Laravel & PHP</p>
-        <div class="bar"><div class="fill" style="width:80%"></div></div>
-    </div>
-
-    <div class="skill">
-        <p>WordPress</p>
-        <div class="bar"><div class="fill" style="width:90%"></div></div>
-    </div>
-
+    <p>Cybersecurity & DevOps enthusiast focused on building secure and resilient systems.</p>
 </section>
 
 <section id="projects">
     <h2>Projects</h2>
-
     <div class="projects">
-
         <div class="card">
             <h3>Venture Hotel System</h3>
-            <p>Secure Laravel system with booking & admin panel.</p>
-            <a href="#" class="btn">View Project</a>
+            <p>Secure Laravel-based system.</p>
         </div>
-
-        <div class="card">
-            <h3>WordPress Work</h3>
-            <p>KU Website development and maintenance.</p>
-            <a href="#" class="btn">View Project</a>
-        </div>
-
     </div>
 </section>
 
-<section>
-<h2>GitHub Activity</h2>
-<img src="https://ghchart.rshah.org/yourusername" alt="GitHub graph">
-</section>
-
-<section id="reports">
-<h2>Security Reports</h2>
-
-<div class="card">
-    <h3>SQL Injection Test</h3>
-    <p>Discovered vulnerability and demonstrated exploit.</p>
-</div>
-
-<div class="card">
-    <h3>XSS Testing</h3>
-    <p>Tested and mitigated cross-site scripting issues.</p>
-</div>
-
-</section>
-
-<section>
-<h2>Live Security Console</h2>
-<div class="terminal" id="terminal"></div>
-</section>
-
 <section id="contact">
-<h2>Contact Me</h2>
-
-<form action="https://formspree.io/f/yourID" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Message" required></textarea>
-    <button type="submit" class="btn">Send</button>
-</form>
-
+    <h2>Contact</h2>
+    <p>Email: your@email.com</p>
 </section>
 
 <footer>
@@ -219,17 +147,17 @@ footer {
 </footer>
 
 <script>
-// typing effect
+// Typing Effect
 const roles = ["Cybersecurity Engineer", "Penetration Tester", "DevOps Enthusiast"];
-let i=0, j=0;
+let i=0,j=0;
 
-function type() {
+function type(){
     if(j < roles[i].length){
         document.getElementById("typing").innerHTML += roles[i][j];
         j++;
-        setTimeout(type, 60);
+        setTimeout(type,60);
     } else {
-        setTimeout(() => {
+        setTimeout(()=>{
             document.getElementById("typing").innerHTML="";
             j=0;
             i=(i+1)%roles.length;
@@ -239,25 +167,61 @@ function type() {
 }
 type();
 
-// terminal
-const lines = [
-"Initializing scan...",
-"Scanning ports...",
-"Detecting vulnerabilities...",
-"Securing system...",
-"✔ System Protected"
-];
+// NETWORK NODES ANIMATION
+const canvas = document.getElementById("network");
+const ctx = canvas.getContext("2d");
 
-let x=0;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function terminal(){
-    if(x < lines.length){
-        document.getElementById("terminal").innerHTML += lines[x] + "<br>";
-        x++;
-        setTimeout(terminal,700);
-    }
+let nodes = [];
+
+for(let i=0;i<80;i++){
+    nodes.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        dx:(Math.random()-0.5)*1,
+        dy:(Math.random()-0.5)*1
+    });
 }
-terminal();
+
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    nodes.forEach(n=>{
+        n.x += n.dx;
+        n.y += n.dy;
+
+        if(n.x<0 || n.x>canvas.width) n.dx*=-1;
+        if(n.y<0 || n.y>canvas.height) n.dy*=-1;
+
+        ctx.beginPath();
+        ctx.arc(n.x,n.y,2,0,Math.PI*2);
+        ctx.fillStyle="#0ea5e9";
+        ctx.fill();
+    });
+
+    for(let i=0;i<nodes.length;i++){
+        for(let j=i+1;j<nodes.length;j++){
+            let dist = Math.hypot(
+                nodes[i].x - nodes[j].x,
+                nodes[i].y - nodes[j].y
+            );
+
+            if(dist < 120){
+                ctx.strokeStyle="rgba(14,165,233,0.2)";
+                ctx.beginPath();
+                ctx.moveTo(nodes[i].x,nodes[i].y);
+                ctx.lineTo(nodes[j].x,nodes[j].y);
+                ctx.stroke();
+            }
+        }
+    }
+
+    requestAnimationFrame(draw);
+}
+
+draw();
 </script>
 
 </body>
